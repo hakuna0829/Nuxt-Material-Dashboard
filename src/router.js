@@ -37,7 +37,7 @@ const router = new Router({
         // Application
         {
           name: "Apps",
-          path: "apps/chat",
+          path: "single-check",
           component: () => import("@/views/single-check/SingleCheck")
         },
         // Components

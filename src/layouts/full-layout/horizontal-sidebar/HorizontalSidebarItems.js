@@ -5,7 +5,7 @@ export default [
     icon: "mdi mdi-gauge",
     title: "Dashboard",
     class: "two-column",
-    to: "/dashboards/overview",
+    to: "/dashboards/overview"
     // children: [
     //   {
     //     icon: "mdi mdi-adjust",
@@ -45,7 +45,7 @@ export default [
     model: false,
     icon: "mdi mdi-widgets",
     title: "Single check",
-    to: "/apps/chat",
+    to: "/single-check"
     // children: [
     //   {
     //     icon: "mdi mdi-comment-outline",
@@ -97,7 +97,7 @@ export default [
     icon: "mdi mdi-animation",
     title: "Book Check",
     extraclass: "mega-dropdown",
-    to: "/components",
+    to: "/components"
     // children: [
     //   {
     //     title: "Alerts",
@@ -413,7 +413,7 @@ export default [
     model: false,
     icon: "mdi mdi-chart-bar",
     title: "API key",
-    to: "/charts/apexcharts",
+    to: "/charts/apexcharts"
   },
 
   {
@@ -422,8 +422,8 @@ export default [
     icon: "mdi mdi-collage",
     title: "API Documentation",
     extraclass: "two-column",
-    to: "https://bestemailverifier/api-documentation/",
-  },
+    to: "https://bestemailverifier/api-documentation/"
+  }
 
   // {
   //   group: "/tables",

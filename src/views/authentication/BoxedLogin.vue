@@ -4,17 +4,29 @@
       <v-col lg="11" sm="8" xl="7">
         <v-card class="elevation-4">
           <v-row>
-            <v-col lg="7" class="info d-none d-md-flex align-center justify-center">
+            <v-col
+              lg="7"
+              class="info d-none d-md-flex align-center justify-center"
+            >
               <div class="d-none d-sm-block">
                 <div class="d-flex align-center pa-10">
                   <div>
-                    <h2
-                      class="display-1 white--text font-weight-medium"
-                    >Best Email Verifier</h2>
+                    <h2 class="display-1 white--text font-weight-medium">
+                      Best Email Verifier
+                    </h2>
                     <h6
                       class="subtitle-1 mt-4 white--text op-5 font-weight-regular"
-                    >Your ultimate tool to enhance email deliverability.</h6>
-                    <v-btn class="mt-4 text-capitalize" x-large outlined color="white" @click="handleBack">Back To Main Page</v-btn>
+                    >
+                      Your ultimate tool to enhance email deliverability.
+                    </h6>
+                    <v-btn
+                      class="mt-4 text-capitalize"
+                      x-large
+                      outlined
+                      color="white"
+                      @click="handleBack"
+                      >Back To Main Page</v-btn
+                    >
                   </div>
                 </div>
               </div>
@@ -26,19 +38,28 @@
                     <v-avatar left>
                       <v-btn color="blue lighten-1" class="white--text">
                         <v-icon>mdi-google</v-icon>
-                      </v-btn>
-                    </v-avatar>Use Google account
-                  </v-chip>                  
+                      </v-btn> </v-avatar
+                    >Use Google account
+                  </v-chip>
                 </div>
                 <!-- <img src="@/assets/images/logo-icon.png" />-->
-                <h2 class="font-weight-bold mt-4 blue-grey--text text--darken-2">Login</h2> 
-                
+                <h2
+                  class="font-weight-bold mt-4 blue-grey--text text--darken-2"
+                >
+                  Login
+                </h2>
+
                 <h6 class="subtitle-1">
                   Don't have an account?
                   <a href="#/pages/boxedregister" class>Register</a>
                 </h6>
 
-                <v-form ref="form" v-model="valid" lazy-validation action="/dashboards/analytical">
+                <v-form
+                  ref="form"
+                  v-model="valid"
+                  lazy-validation
+                  action="/dashboards/analytical"
+                >
                   <v-text-field
                     v-model="email"
                     :rules="emailRules"
@@ -76,9 +97,9 @@
                     class="mr-4"
                     submit
                     @click="submit"
-                  >Sign In</v-btn>
+                    >Sign In</v-btn
+                  >
                 </v-form>
-                
               </div>
             </v-col>
           </v-row>
@@ -112,7 +133,7 @@ export default {
     submit() {
       this.$refs.form.validate();
       if (this.$refs.form.validate(true)) {
-        this.$router.push({ path: "/dashboards/analytical" });
+        this.$router.push({ path: "/dashboards/overview" });
       }
     },
     handleBack() {

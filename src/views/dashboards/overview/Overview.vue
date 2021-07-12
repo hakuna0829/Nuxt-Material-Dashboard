@@ -35,7 +35,7 @@
       <v-col cols="12" lg="12">
         <TheSalesofAmplePixel></TheSalesofAmplePixel>
       </v-col>
-      <v-col cols="12" lg="7">
+      <!-- <v-col cols="12" lg="7">
         <TheBandwidthUsage></TheBandwidthUsage>
         <TheDownloadCount></TheDownloadCount>
         <TheProductAvailibility></TheProductAvailibility>
@@ -60,7 +60,7 @@
       </v-col>
       <v-col cols="12" lg="4">
         <TheFollowerCard></TheFollowerCard>
-      </v-col>
+      </v-col> -->
     </v-row>
   </v-container>
 </template>
@@ -102,44 +102,44 @@ export default {
       import(
         "@/views/dashboards/dashboardComponents/monthly-count/TheMonthlyCount"
       ),
-    TheBandwidthUsage: () =>
-      import(
-        "@/views/dashboards/dashboardComponents/bandwidth-usage/TheBandwidthUsage"
-      ),
-    TheDownloadCount: () =>
-      import(
-        "@/views/dashboards/dashboardComponents/download-count/TheDownloadCount"
-      ),
-    TheProductAvailibility: () =>
-      import(
-        "@/views/dashboards/dashboardComponents/product-availibility/TheProductAvailibility"
-      ),
-    TheNotification: () =>
-      import(
-        "@/views/dashboards/dashboardComponents/notification/TheNotification"
-      ),
-    TheReviews: () =>
-      import("@/views/dashboards/dashboardComponents/reviews/TheReviews"),
+    // TheBandwidthUsage: () =>
+    //   import(
+    //     "@/views/dashboards/dashboardComponents/bandwidth-usage/TheBandwidthUsage"
+    //   ),
+    // TheDownloadCount: () =>
+    //   import(
+    //     "@/views/dashboards/dashboardComponents/download-count/TheDownloadCount"
+    //   ),
+    // TheProductAvailibility: () =>
+    //   import(
+    //     "@/views/dashboards/dashboardComponents/product-availibility/TheProductAvailibility"
+    //   ),
+    // TheNotification: () =>
+    //   import(
+    //     "@/views/dashboards/dashboardComponents/notification/TheNotification"
+    //   ),
+    // TheReviews: () =>
+    //   import("@/views/dashboards/dashboardComponents/reviews/TheReviews"),
     TheVisitSource: () =>
       import(
         "@/views/dashboards/dashboardComponents/visit-source/TheVisitSource"
-      ),
-    TheExperiences: () =>
-      import(
-        "@/views/dashboards/dashboardComponents/experiences/TheExperiences"
-      ),
-    TheBackgroundProfileCard: () =>
-      import(
-        "@/views/dashboards/dashboardComponents/background-profile-card/TheBackgroundProfileCard"
-      ),
-    TheActivityTimeline: () =>
-      import(
-        "@/views/dashboards/dashboardComponents/activity-timeline/TheActivityTimeline"
-      ),
-    TheFollowerCard: () =>
-      import(
-        "@/views/dashboards/dashboardComponents/follower-card/TheFollowerCard"
       )
+    // TheExperiences: () =>
+    //   import(
+    //     "@/views/dashboards/dashboardComponents/experiences/TheExperiences"
+    //   ),
+    // TheBackgroundProfileCard: () =>
+    //   import(
+    //     "@/views/dashboards/dashboardComponents/background-profile-card/TheBackgroundProfileCard"
+    //   ),
+    // TheActivityTimeline: () =>
+    //   import(
+    //     "@/views/dashboards/dashboardComponents/activity-timeline/TheActivityTimeline"
+    //   ),
+    // TheFollowerCard: () =>
+    //   import(
+    //     "@/views/dashboards/dashboardComponents/follower-card/TheFollowerCard"
+    //   )
   }
 };
 </script>
