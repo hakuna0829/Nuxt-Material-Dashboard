@@ -92,12 +92,12 @@ export default [
   },
 
   {
-    group: "/uicomponents",
+    group: "/check",
     model: false,
     icon: "mdi mdi-animation",
-    title: "Book Check",
+    title: "Bulk Check",
     extraclass: "mega-dropdown",
-    to: "/components"
+    to: "/bulk-check"
     // children: [
     //   {
     //     title: "Alerts",

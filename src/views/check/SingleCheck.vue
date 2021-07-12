@@ -6,7 +6,7 @@
       :breadcrumbs="breadcrumbs"
     ></BaseBreadcrumb>
     <v-row>
-      <v-col cols="12" md="5">
+      <v-col cols="12" md="5" lg="4">
         <v-text-field label="" placeholder="" outlined :rules="rules" dense>
           <template v-slot:append-outer>
             <div style="margin-top:-8px">

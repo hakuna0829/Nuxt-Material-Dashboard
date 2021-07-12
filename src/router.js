@@ -38,7 +38,13 @@ const router = new Router({
         {
           name: "Apps",
           path: "single-check",
-          component: () => import("@/views/single-check/SingleCheck")
+          component: () => import("@/views/check/SingleCheck")
+        },
+        // Application
+        {
+          name: "Apps",
+          path: "bulk-check",
+          component: () => import("@/views/check/BulkCheck")
         },
         // Components
         {

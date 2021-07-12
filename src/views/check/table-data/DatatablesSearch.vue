@@ -23,6 +23,9 @@
           item-key="email"
           class="border"
           :custom-filter="filterOnlyCapsText"
+          :footer-props="{
+            'items-per-page-options': [10, 50, 200, -1]
+          }"
         ></v-data-table>
       </v-card>
     </div>
