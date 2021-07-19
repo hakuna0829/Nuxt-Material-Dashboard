@@ -29,7 +29,7 @@ export default {
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: "10%",
+          columnWidth: "25%",
           endingShape: "flat"
         }
       },
@@ -86,8 +86,11 @@ export default {
         }
       },
       stroke: {
-        curve: "straight",
-        width: 0
+        // curve: "straight",
+        // width: 2
+        show: true,
+        width: 2,
+        colors: ["transparent"]
       },
       tooltip: {
         theme: "dark"
