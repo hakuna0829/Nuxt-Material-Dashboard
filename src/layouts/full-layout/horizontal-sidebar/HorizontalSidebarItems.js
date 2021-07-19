@@ -413,7 +413,7 @@ export default [
     model: false,
     icon: "mdi mdi-chart-bar",
     title: "API key",
-    to: "/charts/apexcharts"
+    to: "/api-key"
   },
 
   {

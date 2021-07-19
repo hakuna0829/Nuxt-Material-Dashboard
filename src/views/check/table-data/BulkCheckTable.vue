@@ -32,7 +32,7 @@
             <v-icon>mdi-cloud-download</v-icon>
           </template>
           <template v-slot:item.status="{ item }">
-            <v-chip :color="primary" dark>
+            <v-chip dark>
               {{ item.status }}
             </v-chip>
           </template>

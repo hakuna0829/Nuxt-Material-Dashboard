@@ -158,13 +158,13 @@ export default {
         text: "Id",
         align: "start",
         sortable: false,
-        value: "id",
+        value: "id"
       },
       { text: "User Info", value: "userinfo" },
       { text: "Phone", value: "phone" },
       { text: "Joining Date", value: "jdate" },
       { text: "Role", value: "role" },
-      { text: "Actions", value: "actions", sortable: false },
+      { text: "Actions", value: "actions", sortable: false }
     ],
     desserts: [],
     editedIndex: -1,
@@ -175,7 +175,7 @@ export default {
       usermail: "",
       phone: "",
       jdate: "",
-      role: "",
+      role: ""
     },
     defaultItem: {
       id: "",
@@ -184,19 +184,19 @@ export default {
       usermail: "",
       phone: "",
       jdate: "",
-      role: "",
-    },
+      role: ""
+    }
   }),
   computed: {
     formTitle() {
       return this.editedIndex === -1 ? "New Contact" : "Edit Contact";
-    },
+    }
   },
 
   watch: {
     dialog(val) {
       val || this.close();
-    },
+    }
   },
 
   created() {
@@ -213,7 +213,7 @@ export default {
           phone: "+123 456 789",
           jdate: "12-10-2014",
           role: "Designer",
-          rolestatus: "cyan lighten-3",
+          rolestatus: "cyan lighten-3"
         },
         {
           id: "#452",
@@ -223,7 +223,7 @@ export default {
           phone: "+234 456 789",
           jdate: "10-09-2014",
           role: "Developer",
-          rolestatus: "light-blue lighten-3",
+          rolestatus: "light-blue lighten-3"
         },
         {
           id: "#565",
@@ -233,7 +233,7 @@ export default {
           phone: "+345 456 789",
           jdate: "01-10-2013",
           role: "Accountant",
-          rolestatus: "teal lighten-3",
+          rolestatus: "teal lighten-3"
         },
         {
           id: "#785",
@@ -243,7 +243,7 @@ export default {
           phone: "+456 456 789",
           jdate: "02-10-2017",
           role: "Designer",
-          rolestatus: "green lighten-3",
+          rolestatus: "green lighten-3"
         },
         {
           id: "#564",
@@ -253,7 +253,7 @@ export default {
           phone: "+567 456 789",
           jdate: "10-9-2015",
           role: "HR",
-          rolestatus: "deep-purple lighten-2",
+          rolestatus: "deep-purple lighten-2"
         },
         {
           id: "#980",
@@ -263,7 +263,7 @@ export default {
           phone: "+678 456 789",
           jdate: "10-5-2013",
           role: "Designer",
-          rolestatus: "indigo lighten-2",
+          rolestatus: "indigo lighten-2"
         },
         {
           id: "#521",
@@ -273,7 +273,7 @@ export default {
           phone: "+123 456 789",
           jdate: "05-10-2012",
           role: "Manager",
-          rolestatus: "blue lighten-2",
+          rolestatus: "blue lighten-2"
         },
         {
           id: "#450",
@@ -283,7 +283,7 @@ export default {
           phone: "+234 456 789",
           jdate: "11-10-2014",
           role: "Chairman",
-          rolestatus: "red lighten-3",
+          rolestatus: "red lighten-3"
         },
         {
           id: "#212",
@@ -293,7 +293,7 @@ export default {
           phone: "+345 456 789",
           jdate: "12-5-2017",
           role: "Designer",
-          rolestatus: "indigo lighten-4",
+          rolestatus: "indigo lighten-4"
         },
         {
           id: "#152",
@@ -303,8 +303,8 @@ export default {
           phone: "+456 456 789",
           jdate: "18-5-2009",
           role: "Developer",
-          rolestatus: "indigo lighten-4",
-        },
+          rolestatus: "indigo lighten-4"
+        }
       ];
     },
 
@@ -335,7 +335,7 @@ export default {
         this.desserts.push(this.editedItem);
       }
       this.close();
-    },
-  },
+    }
+  }
 };
 </script>

@@ -26,7 +26,11 @@
           :footer-props="{
             'items-per-page-options': [10, 50, 200, -1]
           }"
-        ></v-data-table>
+        >
+          <template v-slot:item.email="{ item }">
+            <p class="email">{{ item.email }}</p>
+          </template>
+        </v-data-table>
       </v-card>
     </div>
   </div>
@@ -94,6 +98,20 @@ export default {
         provider: "Outlook.com",
         verified_on: "5-Jul-2021",
         verified_by: "William John"
+      },
+      {
+        email: "someone.surnamexyz@bestemailverifier.com",
+        status: "Deliverable",
+        reason: "Accepted",
+        domain: "bestemailverifier.com",
+        accepted: "Yes",
+        disposable: "No",
+        free: "Yes",
+        role: "No",
+        disabled: "unknown",
+        provider: "Outlook.com",
+        verified_on: "5-Jul-2021",
+        verified_by: "William John"
       }
     ]
   }),
@@ -113,3 +131,21 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+#verify .v-input__append-outer {
+  margin-top: 0px !important;
+}
+
+.email {
+  margin: 0px;
+  max-width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  @media (min-width: 1904px) {
+    max-width: 180px;
+    margin: 0px;
+  }
+}
+</style>

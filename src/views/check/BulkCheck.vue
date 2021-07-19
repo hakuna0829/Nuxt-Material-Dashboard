@@ -6,7 +6,7 @@
       :breadcrumbs="breadcrumbs"
     ></BaseBreadcrumb>
     <v-row>
-      <v-col cols="12" lg="4">
+      <!-- <v-col cols="12" lg="4">
         <v-text-field label="" placeholder="" outlined :rules="rules" dense>
           <template v-slot:append-outer>
             <div style="margin-top:-8px">
@@ -16,9 +16,18 @@
             </div>
           </template>
         </v-text-field>
+      </v-col> -->
+      <v-col cols="12" sm="12">
+        <v-row align="center" align-content="center">
+          <!-- <div> -->
+          <v-col cols="12" sm="12">
+            <FileUpload />
+          </v-col>
+        </v-row>
+        <!-- </div> -->
       </v-col>
       <v-col cols="12" sm="12">
-        <BaseCard heading="">
+        <BaseCard>
           <DatatablesSearch></DatatablesSearch>
         </BaseCard>
       </v-col>
@@ -54,7 +63,8 @@ export default {
     ]
   }),
   components: {
-    DatatablesSearch: () => import("./table-data/BulkCheckTable")
+    DatatablesSearch: () => import("./table-data/BulkCheckTable"),
+    FileUpload: () => import("./FileUpload")
   }
 };
 </script>

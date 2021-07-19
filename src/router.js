@@ -46,6 +46,11 @@ const router = new Router({
           path: "bulk-check",
           component: () => import("@/views/check/BulkCheck")
         },
+        {
+          name: "Apps",
+          path: "api-key",
+          component: () => import("@/views/apikey/APIKey")
+        },
         // Components
         {
           name: "Alerts",
