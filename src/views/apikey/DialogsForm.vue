@@ -29,8 +29,8 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="error" text @click="toggleOpen()">Cancel</v-btn>
-            <v-btn color="success" text @click="submit">Create key</v-btn>
+            <v-btn color="error" @click="toggleOpen()">Cancel</v-btn>
+            <v-btn color="success" @click="submit">Create key</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>

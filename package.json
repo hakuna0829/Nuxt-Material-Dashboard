@@ -41,6 +41,7 @@
     "vue-server-renderer": "^2.6.12",
     "vue-skycons": "^1.0.5",
     "vue-the-mask": "^0.11.1",
+    "vue-timezone-picker": "^0.0.2",
     "vue-upload-component": "^2.8.22",
     "vue-world-map": "^0.1.1",
     "vuebar": "0.0.20",

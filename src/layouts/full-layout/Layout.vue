@@ -50,7 +50,7 @@
     <!-- ---------------------------------- -->
     <!--- Horizontal Footer part -->
     <!-- ---------------------------------- -->
-    <HorizontalFooter v-else></HorizontalFooter>
+    <!-- <HorizontalFooter v-else></HorizontalFooter> -->
   </v-app>
 </template>
 
@@ -60,7 +60,7 @@ import VerticalHeader from "./vertical-header/VerticalHeader";
 import HorizontalSidebar from "./horizontal-sidebar/HorizontalSidebar";
 import VerticalSidebar from "./vertical-sidebar/VerticalSidebar";
 import Footer from "./footer/Footer";
-import HorizontalFooter from "./horizontal-footer/HorizontalFooter";
+// import HorizontalFooter from "./horizontal-footer/HorizontalFooter";
 import Customizer from "./customizer/Customizer";
 import { mapState, mapMutations } from "vuex";
 export default {
@@ -72,27 +72,26 @@ export default {
     HorizontalSidebar,
     VerticalSidebar,
     Footer,
-    HorizontalFooter,
-    Customizer,
+    // HorizontalFooter,
+    Customizer
   },
 
   props: {
-    source: String,
+    source: String
   },
   data: () => ({
-    expandOnHover: false,
+    expandOnHover: false
   }),
   computed: {
-    ...mapState(["Customizer_drawer", "setHorizontalLayout"]),
+    ...mapState(["Customizer_drawer", "setHorizontalLayout"])
   },
 
   methods: {
     ...mapMutations({
-      setCustomizerDrawer: "SET_CUSTOMIZER_DRAWER",
-    }),
-  },
+      setCustomizerDrawer: "SET_CUSTOMIZER_DRAWER"
+    })
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

@@ -13,7 +13,7 @@
           </h6>
         </div>
       </v-col>
-      <v-col cols="12" lg="3" sm="4" class="border-right py-0">
+      <v-col cols="12" lg="3" sm="4" class=" py-0">
         <!-- <div class="d-flex align-items-center pa-5">
           <div class="mx-3">
             <h3 class="font-weight-regular">$31568</h3>

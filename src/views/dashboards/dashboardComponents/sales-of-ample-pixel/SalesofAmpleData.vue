@@ -3,11 +3,11 @@ export default {
   SalesAmpleChart: {
     series: [
       {
-        name: "Valid but Risky",
+        name: "Deliverable",
         data: [0, 4, 3, 24, 9, 10, 18, 15, 44, 17, 19, 51]
       },
       {
-        name: "Deliverable",
+        name: "Valid but Risky",
         data: [0, 3, 10, 16, 12, 8, 28, 14, 20, 41, 15, 38]
       },
       {

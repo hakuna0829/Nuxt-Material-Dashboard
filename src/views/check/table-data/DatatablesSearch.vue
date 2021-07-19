@@ -17,7 +17,7 @@
           ></v-text-field>
         </v-card-title>
         <v-data-table
-          :headers="headers"
+          :headers="computedHeaders"
           :items="desserts"
           :search="search"
           item-key="email"
@@ -30,6 +30,9 @@
           <template v-slot:item.email="{ item }">
             <p class="email">{{ item.email }}</p>
           </template>
+          <template v-slot:item.domain="{ item }">
+            <p class="email">{{ item.domain }}</p>
+          </template>
         </v-data-table>
       </v-card>
     </div>
@@ -39,7 +42,13 @@
 <script>
 export default {
   name: "DatatablesSearch",
-
+  computed: {
+    computedHeaders() {
+      return this.headers.filter(
+        h => !h.hide || !this.$vuetify.breakpoint[h.hide]
+      );
+    }
+  },
   data: () => ({
     search: "",
     headers: [
@@ -47,14 +56,34 @@ export default {
       { text: "Status", value: "status", filterable: false },
       { text: "Reason", value: "reason", filterable: false },
       { text: "Domain", value: "domain", filterable: false },
-      { text: "Accept all", value: "accepted", filterable: false },
+      {
+        text: "Accept all",
+        value: "accepted",
+        filterable: false,
+        hide: "lgAndDown"
+      },
       { text: "Disposable", value: "disposable", filterable: false },
-      { text: "Free", value: "free", filterable: false },
-      { text: "Role", value: "role", filterable: false },
-      { text: "Disabled", value: "disabled", filterable: false },
+      { text: "Free", value: "free", filterable: false, hide: "lgAndDown" },
+      { text: "Role", value: "role", filterable: false, hide: "lgAndDown" },
+      {
+        text: "Disabled",
+        value: "disabled",
+        filterable: false,
+        hide: "lgAndDown"
+      },
       { text: "Provider", value: "provider", filterable: false },
-      { text: "Verified on", value: "verified_on", filterable: false },
-      { text: "Verified by", value: "verified_by", filterable: false }
+      {
+        text: "Verified on",
+        value: "verified_on",
+        filterable: false,
+        hide: "lgAndDown"
+      },
+      {
+        text: "Verified by",
+        value: "verified_by",
+        filterable: false,
+        hide: "lgAndDown"
+      }
     ],
     desserts: [
       {

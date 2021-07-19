@@ -5,7 +5,7 @@ export default [
     icon: "mdi mdi-gauge",
     title: "Dashboard",
     class: "two-column",
-    to: "/dashboards/overview"
+    to: "/dashboards"
     // children: [
     //   {
     //     icon: "mdi mdi-adjust",

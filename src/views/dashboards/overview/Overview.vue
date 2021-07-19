@@ -19,17 +19,18 @@
               persistent-hint
               return-object
               single-line
+              value="select"
             ></v-select>
           </div>
         </div>
       </v-col>
-      <v-col cols="12" md="6">
+      <v-col cols="12">
         <TheProgressCard></TheProgressCard>
       </v-col>
-      <v-col cols="12" md="6">
+      <v-col cols="12">
         <TheVisitSource></TheVisitSource>
       </v-col>
-      <v-col cols="12" lg="8">
+      <v-col cols="12">
         <TheMonthlyCount></TheMonthlyCount>
       </v-col>
       <v-col cols="12" lg="12">
@@ -70,20 +71,17 @@ export default {
   name: "Overview",
   data: () => ({
     page: {
-      title: "Overview"
+      title: "Dashboard"
     },
     breadcrumbs: [
       {
         text: "Dashboard",
-        disabled: false,
+        disabled: true,
         to: "#"
-      },
-      {
-        text: "Overview",
-        disabled: true
       }
     ],
-    items: [{ state: "Last 12 month", abbr: "L12" }]
+    items: [{ state: "Last 12 month", abbr: "L12" }],
+    select: { state: "Last 12 month", abbr: "L12" }
   }),
   components: {
     TheProgressCard: () =>

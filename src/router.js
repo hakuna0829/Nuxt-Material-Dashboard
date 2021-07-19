@@ -23,7 +23,7 @@ const router = new Router({
   routes: [
     {
       path: "/",
-      redirect: "dashboards/overview",
+      redirect: "dashboards",
       component: () => import("@/layouts/full-layout/Layout"),
       // name: "Overview",
       // path: "dashboards/overview",
@@ -50,6 +50,16 @@ const router = new Router({
           name: "Apps",
           path: "api-key",
           component: () => import("@/views/apikey/APIKey")
+        },
+        {
+          name: "Apps",
+          path: "profile",
+          component: () => import("@/views/profile")
+        },
+        {
+          name: "Apps",
+          path: "account-settings",
+          component: () => import("@/views/account-settings")
         },
         // Components
         {
@@ -395,7 +405,7 @@ const router = new Router({
         },
         {
           name: "Overview",
-          path: "dashboards/overview",
+          path: "dashboards",
           component: () => import("@/views/dashboards/overview/Overview")
         },
         {

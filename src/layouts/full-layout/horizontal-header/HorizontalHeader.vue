@@ -15,12 +15,15 @@
         class="align-center d-flex"
         v-if="navbarColor !== 'white'"
       >
-        <span class="logo-icon">
-          <img src="../../../assets/images/logo-light-icon.png" />
-        </span>
-        <span class="logo-text ml-2" :class="`${showLogo ? '' : 'hidelogo'}`">
+        <a href="https://bestemailverifier.com" target="blank">
+          <span class="logo-icon">
+            <img src="../../../assets/images/logo-light-icon.png" />
+          </span>
+        </a>
+
+        <!-- <span class="logo-text ml-2" :class="`${showLogo ? '' : 'hidelogo'}`">
           <img src="../../../assets/images/logo-light-text.png" class="mt-2" />
-        </span>
+        </span> -->
       </v-toolbar-title>
       <!-- ---------------------------------- -->
       <!---  dark Logo part -->
@@ -192,6 +195,73 @@
       </v-menu> -->
       <!-- ---------------------------------- -->
       <!---Messages -->
+
+      <!-- Upgrade Menu -->
+      <v-menu
+        bottom
+        left
+        offset-y
+        origin="top right"
+        transition="scale-transition"
+      >
+        <template v-slot:activator="{ on }">
+          <v-btn dark icon v-on="on" class="mr-2">
+            <v-badge color="red" dot>
+              <v-icon>mdi mdi-cloud-download</v-icon>
+            </v-badge>
+          </v-btn>
+        </template>
+      </v-menu>
+      <!-- Upgrade Menu -->
+      <!-- Setting Menu -->
+      <v-menu
+        bottom
+        left
+        offset-y
+        origin="top right"
+        transition="scale-transition"
+      >
+        <template v-slot:activator="{ on }">
+          <v-btn dark icon v-on="on" class="mr-1">
+            <v-icon>mdi-cog</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <h4 class="px-5 py-3 pt-2 font-weight-medium title">Support</h4>
+          <v-divider></v-divider>
+          <v-list-item
+            v-for="(item, i) in notifications"
+            :key="i"
+            @click="href"
+          >
+            <v-list-item-title>
+              <div class="d-flex align-center py-3">
+                <div class>
+                  <v-btn
+                    class="mr-3"
+                    depressed
+                    fab
+                    small
+                    dark
+                    :color="item.iconbg"
+                  >
+                    <v-icon dark>{{ item.icon }}</v-icon>
+                  </v-btn>
+                </div>
+                <div>
+                  <h4 class="font-weight-medium">{{ item.title }}</h4>
+                  <span
+                    class="text--secondary caption descpart d-block text-truncate"
+                    >{{ item.desc }}</span
+                  >
+                </div>
+              </div>
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
       <!-- ---------------------------------- -->
       <!---User -->
       <!-- ---------------------------------- -->
@@ -208,7 +278,10 @@
         <template v-slot:activator="{ on }">
           <v-btn dark icon v-on="on" class="mr-1">
             <v-avatar size="40">
-              <img src="https://www.pngjoy.com/pngs/73/1571933_user-default-profile-picture-png-hd-png-download.png" alt="Martin" />
+              <img
+                src="https://www.pngjoy.com/pngs/73/1571933_user-default-profile-picture-png-hd-png-download.png"
+                alt="Martin"
+              />
               <!-- <img src="https://ca.slack-edge.com/TGUK83BPA-U01KTG7MK34-g19920895070-512" alt="Martin" /> -->
             </v-avatar>
           </v-btn>
@@ -242,41 +315,25 @@ export default {
   props: {
     value: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data: () => ({
     showLogo: true,
     showSearch: false,
     notifications: [
       {
-        title: "Launch Admin",
+        title: "Knowledge hub",
         iconbg: "error",
         icon: "mdi-link-variant",
-        desc: "Just see the my new admin!",
-        time: "9:30AM",
+        desc: "Source of all knowledge"
       },
       {
-        title: "Event today",
+        title: "Support",
         iconbg: "success",
         icon: "mdi-calendar-check",
-        desc: "Just a reminder that you have event",
-        time: "10:30AM",
-      },
-      {
-        title: "Settings",
-        iconbg: "info",
-        icon: "mdi-cog",
-        desc: "You can customize this template as you want",
-        time: "11:30AM",
-      },
-      {
-        title: "Pavan Kumar",
-        iconbg: "indigo",
-        icon: "mdi-account",
-        desc: "Sent you an notification",
-        time: "12:30AM",
-      },
+        desc: "Send us and email"
+      }
     ],
     messages: [
       {
@@ -284,57 +341,58 @@ export default {
         avatar: "1",
         avatarstatus: "success",
         desc: "Singing Show tonigh at 9pm!",
-        time: "9:30AM",
+        time: "9:30AM"
       },
       {
         title: "Sonu Nigam",
         avatar: "2",
         avatarstatus: "error",
         desc: "The greate malody songs ever sung",
-        time: "10:30AM",
+        time: "10:30AM"
       },
       {
         title: "Arijit singh",
         avatar: "3",
         avatarstatus: "warning",
         desc: "You can customize this template as you want",
-        time: "11:30AM",
+        time: "11:30AM"
       },
       {
         title: "Pavan Kumar",
         avatar: "4",
         avatarstatus: "success",
         desc: "Sent you an notification",
-        time: "12:30AM",
-      },
+        time: "12:30AM"
+      }
     ],
     userprofile: [
-      { title: "Admin settings", to: "/apps/contact" },
-      { title: "Profile", to: "/apps/contact-grid" },
+      { title: "Profile", to: "/profile" },
+      { title: "Settings", to: "/account-settings" },
+      { title: "Users", to: "/" },
       { title: "Billing", to: "/apps/email/inbox" },
       // { title: "Account Setting", to: "/form-layouts/flformbasic" },
-      { title: "Sign out", to: "/authentication/boxedlogin" },
+      { title: "Sign out", to: "/authentication/boxedlogin" }
     ],
     href() {
       return undefined;
-    },
+    }
   }),
 
   computed: {
-    ...mapState(["navbarColor", "Sidebar_drawer"]),
+    ...mapState(["navbarColor", "Sidebar_drawer"])
   },
 
   methods: {
     ...mapMutations({
-      setSidebarDrawer: "SET_SIDEBAR_DRAWER",
+      setSidebarDrawer: "SET_SIDEBAR_DRAWER"
     }),
-    showhideLogo: function () {
+    showhideLogo: function() {
       this.showLogo = !this.showLogo;
     },
-    searchbox: function () {
+    searchbox: function() {
       this.showSearch = !this.showSearch;
-    },
-  },
+    }
+  }
 };
 </script>
 

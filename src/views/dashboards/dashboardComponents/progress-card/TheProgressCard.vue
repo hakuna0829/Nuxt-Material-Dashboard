@@ -4,7 +4,7 @@
       <v-card class="mb-7">
         <v-card-text class="pa-5">
           <v-row>
-            <v-col cols="12" lg="7">
+            <v-col cols="7">
               <h2 class="font-weight-regular">{{ prg1[0] }}</h2>
               <h6
                 class="body-2 mb-1 blue-grey--text text--lighten-2 font-weight-light"
@@ -12,7 +12,7 @@
                 Total Credits Available
               </h6>
             </v-col>
-            <v-col cols="12" lg="5">
+            <v-col cols="5" class="d-flex justify-end">
               <v-btn color="#21c1d6" dark>Buy More</v-btn>
             </v-col>
           </v-row>
@@ -30,7 +30,7 @@
       <v-card class="mb-7">
         <v-card-text class="pa-5">
           <v-row>
-            <v-col cols="12" lg="7">
+            <v-col cols="7">
               <h2 class="font-weight-regular">{{ prg2[0] }}</h2>
               <h6
                 class="body-2 mb-1 blue-grey--text text--lighten-2 font-weight-light"
@@ -38,7 +38,7 @@
                 User Sears Available
               </h6>
             </v-col>
-            <v-col cols="12" lg="5">
+            <v-col cols="5" class="d-flex justify-end">
               <v-btn color="#21c1d6" dark>UPGRADE</v-btn>
             </v-col>
           </v-row>
