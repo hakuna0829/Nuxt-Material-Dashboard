@@ -17,7 +17,7 @@
           ></v-text-field>
         </v-card-title>
         <v-data-table
-          :headers="headers"
+          :headers="computedHeaders"
           :items="desserts"
           :search="search"
           item-key="name"
@@ -32,9 +32,31 @@
             <v-icon>mdi-cloud-download</v-icon>
           </template>
           <template v-slot:item.status="{ item }">
-            <v-chip dark>
+            <v-chip dark :color="getColor(item.status)">
               {{ item.status }}
             </v-chip>
+          </template>
+          <template v-slot:item.action="{ item }">
+            <v-btn depressed class="custom-btn">
+              <v-icon :name="item.action">mdi-play-outline</v-icon>
+            </v-btn>
+            <v-btn depressed class="custom-btn">
+              <v-icon :name="item.action">mdi-delete-outline</v-icon>
+            </v-btn>
+            <v-tooltip top>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  depressed
+                  class="custom-btn"
+                  v-bind="attrs"
+                  v-on="on"
+                  :disabled="item.status !== 'Ready to verify'"
+                >
+                  <v-icon :name="item.action">mdi-cards-outline</v-icon>
+                </v-btn>
+              </template>
+              <span>Download CSV</span>
+            </v-tooltip>
           </template>
         </v-data-table>
       </v-card>
@@ -45,7 +67,13 @@
 <script>
 export default {
   name: "DatatablesSearch",
-
+  computed: {
+    computedHeaders() {
+      return this.headers.filter(
+        h => !h.hide || !this.$vuetify.breakpoint[h.hide]
+      );
+    }
+  },
   data: () => ({
     search: "",
     headers: [
@@ -55,11 +83,31 @@ export default {
       { text: "Duplicates", value: "duplicates", filterable: false },
       { text: "Action", value: "action", filterable: false },
       { text: "Verified on", value: "verified_on", filterable: false },
-      { text: "Total", value: "total", filterable: false },
-      { text: "Deliverable", value: "deliverable", filterable: false },
-      { text: "Valid but Risky", value: "valid_but_risky", filterable: false },
-      { text: "Invalid", value: "invalid", filterable: false },
-      { text: "Unknown", value: "unknown", filterable: false }
+      { text: "Total", value: "total", filterable: false, hide: "lgAndDown" },
+      {
+        text: "Deliverable",
+        value: "deliverable",
+        filterable: false,
+        hide: "lgAndDown"
+      },
+      {
+        text: "Valid but Risky",
+        value: "valid_but_risky",
+        filterable: false,
+        hide: "lgAndDown"
+      },
+      {
+        text: "Invalid",
+        value: "invalid",
+        filterable: false,
+        hide: "lgAndDown"
+      },
+      {
+        text: "Unknown",
+        value: "unknown",
+        filterable: false,
+        hide: "lgAndDown"
+      }
     ],
     desserts: [
       {
@@ -90,6 +138,71 @@ export default {
       },
       {
         name: "tester.csv",
+        status: "Ready to verify",
+        count: 20,
+        duplicates: 2,
+        action: "Run Again",
+        verified_on: "16-May-2021",
+        total: "",
+        deliverable: "",
+        valid_but_risky: "",
+        invalid: "",
+        unknown: ""
+      },
+      {
+        name: "tester.csv",
+        status: "Ready to verify",
+        count: 20,
+        duplicates: 2,
+        action: "Run Again",
+        verified_on: "16-May-2021",
+        total: "",
+        deliverable: "",
+        valid_but_risky: "",
+        invalid: "",
+        unknown: ""
+      },
+      {
+        name: "tester.csv",
+        status: "Ready to verify",
+        count: 20,
+        duplicates: 2,
+        action: "Run Again",
+        verified_on: "16-May-2021",
+        total: "",
+        deliverable: "",
+        valid_but_risky: "",
+        invalid: "",
+        unknown: ""
+      },
+      {
+        name: "tester.csv",
+        status: "Verified",
+        count: 20,
+        duplicates: 2,
+        action: "Run Again",
+        verified_on: "16-May-2021",
+        total: "",
+        deliverable: "",
+        valid_but_risky: "",
+        invalid: "",
+        unknown: ""
+      },
+      {
+        name: "tester.csv",
+        status: "Running",
+        count: 20,
+        duplicates: 2,
+        action: "Run Again",
+        verified_on: "16-May-2021",
+        total: "",
+        deliverable: "",
+        valid_but_risky: "",
+        invalid: "",
+        unknown: ""
+      },
+      {
+        name: "tester.csv",
         status: "Error API",
         count: 20,
         duplicates: 2,
@@ -115,7 +228,21 @@ export default {
           .toLocaleLowerCase()
           .indexOf(search) !== -1
       );
+    },
+    getColor(status) {
+      console.log(status);
+      if (status === "Uploading" || status === "Processing") return "#1e88e5";
+      if (status === "Ready to verify") return "#21c1d699";
+      if (status === "Verified") return "#21c1d6";
+      if (status === "Running") return "#725DF4";
+      if (status === "Error API") return "#ff5252";
     }
   }
 };
 </script>
+<style scoped>
+.custom-btn {
+  min-width: 20px !important;
+  padding: 0px 5px !important;
+}
+</style>
