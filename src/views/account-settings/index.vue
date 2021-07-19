@@ -22,7 +22,7 @@
       >
         <v-card flat>
           <v-card-text>
-            <CompanyProfile v-if="item.key === 'company'" />
+            <!-- <CompanyProfile v-if="item.key === 'company'" /> -->
             <!-- {{ text }} -->
           </v-card-text>
         </v-card>
@@ -56,7 +56,7 @@ export default {
     // }
   },
   components: {
-    CompanyProfile: () => import("./company-profile")
+    // CompanyProfile: () => import("./company-profile")
   }
 };
 </script>

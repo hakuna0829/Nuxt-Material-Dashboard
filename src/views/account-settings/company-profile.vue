@@ -7,20 +7,19 @@
     </v-card-text>
     <v-card-text>
       <v-text-field
-        v-model="firstName"
+        v-model="companyName"
         label="Company/orgainzation name"
         filled
         background-color="transparent"
       ></v-text-field>
       <v-text-field
-        v-model="lastName"
+        v-model="siteUrl"
         label="Website URL"
         filled
         background-color="transparent"
       ></v-text-field>
       <v-text-field
-        type="email"
-        v-model="emailtext"
+        v-model="address"
         label="Address"
         filled
         background-color="transparent"
@@ -28,8 +27,7 @@
       <v-row>
         <v-col cols="12" md="6">
           <v-text-field
-            type="email"
-            v-model="emailtext"
+            v-model="city"
             label="City"
             filled
             background-color="transparent"
@@ -37,8 +35,7 @@
         </v-col>
         <v-col cols="12" md="6">
           <v-text-field
-            type="email"
-            v-model="emailtext"
+            v-model="country"
             label="Country"
             filled
             background-color="transparent"
@@ -76,17 +73,17 @@
 export default {
   name: "CompanyProfile",
   data: () => ({
-    firstName: "Martine",
-    lastName: "Knapic",
-    emailtext: "knapic@gmail.com",
-    password: "1234567889",
-    show1: false,
+    companyName: "Prospect Role",
+    siteUrl: "https://prospectrole.com",
+    address: "Rue de I'Ale",
+    city: "Lausanne",
+    country: "Switzerland",
+    timezone: "America/Chicago",
     rules: {
       required: value => !!value || "Required.",
       min: v => v.length >= 8 || "Min 8 characters",
       emailMatch: () => "The email and password you entered don't match"
     },
-    timezone: "America/Chicago",
     options: {
       width: 500,
       height: 250,
