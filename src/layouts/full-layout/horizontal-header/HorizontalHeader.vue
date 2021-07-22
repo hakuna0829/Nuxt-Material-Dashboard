@@ -368,8 +368,8 @@ export default {
     userprofile: [
       { title: "Profile", to: "/profile" },
       { title: "Settings", to: "/account-settings" },
-      { title: "Users", to: "/" },
-      { title: "Billing", to: "/apps/email/inbox" },
+      { title: "Users", to: "/users" },
+      { title: "Billing", to: "/billing" },
       // { title: "Account Setting", to: "/form-layouts/flformbasic" },
       { title: "Sign out", to: "/authentication/boxedlogin" }
     ],
