@@ -66,6 +66,16 @@ const router = new Router({
           path: "billing",
           component: () => import("@/views/billing")
         },
+        {
+          name: "Apps",
+          path: "users",
+          component: () => import("@/views/users")
+        },
+        {
+          name: "Apps",
+          path: "new-user",
+          component: () => import("@/views/users/new-user")
+        },
         // Components
         {
           name: "Alerts",

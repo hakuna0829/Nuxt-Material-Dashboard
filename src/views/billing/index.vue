@@ -46,7 +46,7 @@
           Invoices
         </p>
         <BaseCard>
-          <DataTable @changeOpen="handleNewDlg($event)"></DataTable>
+          <DataTable></DataTable>
         </BaseCard>
       </v-col>
     </v-row>

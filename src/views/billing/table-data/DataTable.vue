@@ -43,13 +43,10 @@
 </template>
 
 <script>
-import { mdiDelete } from "@mdi/js";
-
 export default {
   name: "DataTable",
 
   data: () => ({
-    showAlert: false,
     selectedName: "",
     headers: [
       { text: "Date", sortable: true, value: "createdDate" },
@@ -58,7 +55,6 @@ export default {
       { text: "Payment type", value: "payment_type", filterable: false },
       { text: "Status", value: "status", filterable: false }
     ],
-    icons: { mdiDelete },
     data: [
       {
         createdDate: "2021-06-21",
@@ -125,40 +121,7 @@ export default {
           "Paid (No VAT liability in Seller's Country. Customer to Reverse Charge."
       }
     ]
-  }),
-  methods: {
-    confirmDelete(item) {
-      const index = this.data.indexOf(item);
-      confirm("Are you sure you want to delete this item?") &&
-        this.data.splice(index, 1);
-    },
-    closeAlert() {
-      this.selectedName = "";
-      this.showAlert = false;
-    },
-    toggleOpen() {
-      this.$emit("changeOpen");
-    }
-  }
+  })
 };
 </script>
-<style scoped lang="scss">
-@import "~vuetify/src/styles/settings/_variables";
-
-@media #{map-get($display-breakpoints, 'md-and-down')} {
-  .custom-class {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 300px;
-  }
-}
-@media #{map-get($display-breakpoints, 'sm-and-down')} {
-  .custom-class {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100px;
-  }
-}
-</style>
+<style scoped lang="scss"></style>
