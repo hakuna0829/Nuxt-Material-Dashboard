@@ -36,7 +36,7 @@
                 <div class="text-center mt-6">
                   <v-chip pill class="mr-2">
                     <v-avatar left>
-                      <v-btn color="blue lighten-1" class="white--text">
+                      <v-btn color="#21c1d6" class="white--text">
                         <v-icon>mdi-google</v-icon>
                       </v-btn> </v-avatar
                     >Use Google account
@@ -51,7 +51,7 @@
 
                 <h6 class="subtitle-1">
                   Don't have an account?
-                  <a href="#/pages/boxedregister" class>Register</a>
+                  <a href="/authentication/BoxedRegister" class>Register</a>
                 </h6>
 
                 <v-form
@@ -77,6 +77,7 @@
                     outlined
                     :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                     :type="show1 ? 'text' : 'password'"
+                    @click:append="show1 = !show1"
                   ></v-text-field>
 
                   <div class="d-block d-sm-flex align-center mb-4 mb-sm-0">
@@ -97,7 +98,7 @@
                     class="mr-4"
                     submit
                     @click="submit"
-                    >Sign In</v-btn
+                    >Login</v-btn
                   >
                 </v-form>
               </div>
@@ -133,7 +134,7 @@ export default {
     submit() {
       this.$refs.form.validate();
       if (this.$refs.form.validate(true)) {
-        this.$router.push({ path: "/dashboards/overview" });
+        this.$router.push({ path: "/dashboards" });
       }
     },
     handleBack() {
@@ -142,3 +143,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+#login .info {
+  background-color: #21c1d6 !important;
+}
+</style>
