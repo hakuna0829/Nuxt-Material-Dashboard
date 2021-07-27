@@ -30,6 +30,21 @@
           <template v-slot:item.email="{ item }">
             <p class="email">{{ item.email }}</p>
           </template>
+          <template v-slot:item.status="{ item }">
+            <v-tooltip right>
+              <template v-slot:activator="{ on, attrs }">
+                <v-chip
+                  dark
+                  :color="getColor(item.status)"
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  {{ item.status }}
+                </v-chip>
+              </template>
+              <span style="width:50%">{{ getTooltip(item.status) }}</span>
+            </v-tooltip>
+          </template>
           <template v-slot:item.domain="{ item }">
             <p class="email">{{ item.domain }}</p>
           </template>
@@ -59,30 +74,26 @@ export default {
       {
         text: "Accept all",
         value: "accepted",
-        filterable: false,
-        hide: "lgAndDown"
+        filterable: false
       },
       { text: "Disposable", value: "disposable", filterable: false },
-      { text: "Free", value: "free", filterable: false, hide: "lgAndDown" },
-      { text: "Role", value: "role", filterable: false, hide: "lgAndDown" },
+      { text: "Free", value: "free", filterable: false },
+      { text: "Role", value: "role", filterable: false },
       {
         text: "Disabled",
         value: "disabled",
-        filterable: false,
-        hide: "lgAndDown"
+        filterable: false
       },
       { text: "Provider", value: "provider", filterable: false },
       {
         text: "Verified on",
         value: "verified_on",
-        filterable: false,
-        hide: "lgAndDown"
+        filterable: false
       },
       {
         text: "Verified by",
         value: "verified_by",
-        filterable: false,
-        hide: "lgAndDown"
+        filterable: false
       }
     ],
     desserts: [
@@ -130,7 +141,21 @@ export default {
       },
       {
         email: "someone.surnamexyz@bestemailverifier.com",
-        status: "Deliverable",
+        status: "Unknown",
+        reason: "Accepted",
+        domain: "bestemailverifier.com",
+        accepted: "Yes",
+        disposable: "No",
+        free: "Yes",
+        role: "No",
+        disabled: "unknown",
+        provider: "Outlook.com",
+        verified_on: "5-Jul-2021",
+        verified_by: "William John"
+      },
+      {
+        email: "someone.surnamexyz@bestemailveri2fier.com",
+        status: "Invalid",
         reason: "Accepted",
         domain: "bestemailverifier.com",
         accepted: "Yes",
@@ -156,6 +181,23 @@ export default {
           .toLocaleLowerCase()
           .indexOf(search) !== -1
       );
+    },
+    getColor(status) {
+      if (status === "Deliverable") return "#26c6da";
+      if (status === "Valid but Risky") return "#745af2";
+      if (status === "Invalid") return "#f62d51";
+      if (status === "Unknown") return "#dadada";
+      // if (status === "Running") return "#ff5252";
+    },
+    getTooltip(status) {
+      if (status === "Deliverable")
+        return "For deliverable emails there is a 98% chance that your email will reach the owner's inbox. We recommend you use only deliverable addresses for email outreach campaigns.";
+      if (status === "Valid but Risky")
+        return "Valid emails indicate that email might be deliverable but no system can guarantee its existence because the emails server is set to “accept all” emails. Validity is confirmed for example by checking the syntax of the email and responsiveness of the email server of the domain used.";
+      if (status === "Invalid")
+        return "Invalid emails will likely not reach the destination. ";
+      if (status === "Unknown")
+        return "We weren’t able to verify the deliverability of the email address. Most likely because the server has not responded to our requests. We do not charge for unknown checks. ";
     }
   }
 };

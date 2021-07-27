@@ -10,7 +10,12 @@
         <v-text-field label="" placeholder="" outlined :rules="rules" dense>
           <template v-slot:append-outer>
             <div style="margin-top:-8px">
-              <v-btn depressed color="primary" style="height:40px">
+              <v-btn
+                depressed
+                color="#21c1d6"
+                class="white--text"
+                style="height:40px"
+              >
                 Verify
               </v-btn>
             </div>

@@ -69,7 +69,7 @@
             </span>
             <span
               class="font-weight-regular blue-grey--text text--lighten-2 mr-1"
-              >Invalid</span
+              >Unknown</span
             >
           </span>
         </div>

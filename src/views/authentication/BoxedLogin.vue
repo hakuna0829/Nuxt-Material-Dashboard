@@ -91,6 +91,19 @@
                       <a href="javascript:void(0)" class="link">Forgot pwd?</a>
                     </div>
                   </div>
+                  <div class="form-group row">
+                    <!-- <label for="robot" class="col-sm-2 col-form-label"></label> -->
+                    <div class="col-sm-10">
+                      <vue-recaptcha
+                        ref="recaptcha"
+                        :loadRecaptchaScript="true"
+                        @verify="onVerify"
+                        sitekey="6LdFNNcUAAAAAGKsWDe9Xs2Fj_d29ywe2ae4nIsF"
+                      >
+                      </vue-recaptcha>
+                    </div>
+                  </div>
+                  adsfasdf
                   <v-btn
                     :disabled="!valid"
                     color="info"
@@ -111,6 +124,7 @@
 </template>
 
 <script>
+import VueRecaptcha from "vue-recaptcha";
 export default {
   name: "BoxedLogin",
 
@@ -127,19 +141,26 @@ export default {
       v => !!v || "E-mail is required",
       v => /.+@.+\..+/.test(v) || "E-mail must be valid"
     ],
-    checkbox: false
+    checkbox: false,
+    robot: false
   }),
   computed: {},
   methods: {
     submit() {
       this.$refs.form.validate();
-      if (this.$refs.form.validate(true)) {
+      if (this.$refs.form.validate(true) && this.robot) {
         this.$router.push({ path: "/dashboards" });
       }
     },
     handleBack() {
       this.$router.push({ path: "/" });
+    },
+    onVerify: function(response) {
+      if (response) this.robot = true;
     }
+  },
+  components: {
+    "vue-recaptcha": VueRecaptcha
   }
 };
 </script>
