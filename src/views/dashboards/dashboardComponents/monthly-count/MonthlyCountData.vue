@@ -29,7 +29,7 @@ export default {
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: "25%",
+          columnWidth: "40%",
           endingShape: "flat"
         }
       },

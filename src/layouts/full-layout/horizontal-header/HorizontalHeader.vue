@@ -205,10 +205,11 @@
         transition="scale-transition"
       >
         <template v-slot:activator="{ on }">
-          <v-btn dark icon v-on="on" class="mr-2">
-            <v-badge color="red" dot>
+          <v-btn dark v-on="on" class="mr-2 align-self-center">
+            <!-- <v-badge color="red" dot>
               <v-icon>mdi mdi-cloud-download</v-icon>
-            </v-badge>
+            </v-badge> -->
+            Upgrade
           </v-btn>
         </template>
       </v-menu>
