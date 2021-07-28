@@ -6,7 +6,7 @@
     <div class="">
       <v-card>
         <v-row align="center">
-          <v-col class="grow"></v-col>
+          <v-col class="grow">Company users</v-col>
           <v-col class="shrink">
             <v-btn color="primary" to="/new-user">Add new user</v-btn>
           </v-col>

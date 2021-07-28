@@ -62,7 +62,10 @@
         </p>
       </v-radio-group>
       <div class="d-flex align-baseline">
-        <v-btn class="text-capitalize mt-5 element-0" color="warning"
+        <v-btn
+          class="text-capitalize mt-5 element-0"
+          @click="invite()"
+          color="warning"
           >Invite user to join</v-btn
         >&nbsp; or &nbsp;
         <a
@@ -73,6 +76,12 @@
         >
       </div>
     </v-card-text>
+    <v-snackbar v-model="snackbar_success" top right color="success">
+      User has been invited.You can inform them to check their email.
+    </v-snackbar>
+    <v-snackbar v-model="snackbar_error" top right color="error">
+      Something went wrong. Please try again later or contact our support team.
+    </v-snackbar>
   </v-card>
 </template>
 
@@ -82,6 +91,8 @@ export default {
   data: () => ({
     emailtext: "knapic@gmail.com",
     userType: "",
+    snackbar_success: false,
+    snackbar_error: false,
     password60days: false,
     rules: [
       value => !!value || "Required.",
@@ -91,7 +102,19 @@ export default {
         return pattern.test(value) || "Invalid e-mail.";
       }
     ]
-  })
+  }),
+  methods: {
+    handleSuccessSnackBar(val) {
+      this.snackbar_success = val;
+    },
+    handleErrorSnackBar(val) {
+      this.snackbar_error = val;
+    },
+    invite() {
+      if (this.userType !== "user") this.handleSuccessSnackBar(true);
+      else this.handleErrorSnackBar(true);
+    }
+  }
 };
 </script>
 <style scoped>
