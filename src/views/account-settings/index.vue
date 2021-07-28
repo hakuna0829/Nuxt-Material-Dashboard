@@ -22,12 +22,22 @@
       >
         <v-card flat>
           <v-card-text>
-            <CompanyProfile v-if="item.key === 'company'" />
+            <CompanyProfile
+              v-if="item.key === 'company'"
+              @handleSuccessSnackBar="handleSuccessSnackBar($event)"
+              @handleErrorSnackBar="handleErrorSnackBar($event)"
+            />
             <!-- {{ text }} -->
           </v-card-text>
         </v-card>
       </v-tab-item>
     </v-tabs-items>
+    <v-snackbar v-model="snackbar_success" top right color="success">
+      The information was successfully saved.
+    </v-snackbar>
+    <v-snackbar v-model="snackbar_error" top right color="error">
+      The server is not responding. Try again later.
+    </v-snackbar>
   </v-card>
 </template>
 
@@ -35,11 +45,13 @@
 export default {
   data: () => ({
     currentItem: "tab-company",
+    snackbar_success: false,
+    snackbar_error: false,
     items: [
       { label: "Company profile", key: "company" },
-      { label: "Shopping", key: "shopping" },
-      { label: "Videos", key: "videos" },
-      { label: "Images", key: "images" }
+      { label: "Default setting", key: "default_setting" },
+      { label: "Domain", key: "domain" },
+      { label: "Other", key: "other" }
     ],
     text:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
@@ -54,6 +66,12 @@ export default {
     //     this.currentItem = "tab-" + item;
     //   });
     // }
+    handleSuccessSnackBar(val) {
+      this.snackbar_success = val;
+    },
+    handleErrorSnackBar(val) {
+      this.snackbar_error = val;
+    }
   },
   components: {
     CompanyProfile: () => import("./company-profile")

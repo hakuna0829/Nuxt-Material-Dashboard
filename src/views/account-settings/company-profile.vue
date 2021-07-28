@@ -35,6 +35,7 @@
             item-text="name"
             item-value="code"
             v-model="country"
+            @change="changeCountry"
             :items="countryData"
           />
         </v-col>
@@ -55,7 +56,10 @@
     </v-card-text>
     <v-card-text>
       <div class="d-flex align-baseline">
-        <v-btn class="text-capitalize mt-5 element-0" color="success"
+        <v-btn
+          class="text-capitalize mt-5 element-0"
+          color="success"
+          @click="submit"
           >Save</v-btn
         >&nbsp; or &nbsp;
         <a
@@ -441,6 +445,13 @@ export default {
       this.dateTimeUtc = moment()
         .tz(selectObj)
         .format("ddd, DD MMM YYYY HH:mm:ss");
+    },
+    changeCountry(seleted) {
+      console.log("seleted country", seleted);
+    },
+    submit() {
+      if (this.country !== "AF") this.$emit("handleSuccessSnackBar", true);
+      else this.$emit("handleErrorSnackBar", true);
     }
   }
 };
