@@ -6,7 +6,11 @@
     <div class="mt-4">
       <v-card>
         <v-row align="center">
-          <v-col class="grow"></v-col>
+          <v-col class="grow">
+            <div>
+              Available API keys
+            </div>
+          </v-col>
           <v-col class="shrink">
             <v-btn color="primary" @click="toggleOpen()">Add new key</v-btn>
           </v-col>
@@ -45,6 +49,15 @@
           </template>
         </v-data-table>
       </v-card>
+      <DeleteDialog
+        :open="showAlert"
+        @changeOpen="handleDeleteDlg($event)"
+        @removeItem="removeItem($event)"
+        @handleSnackBar="handleSnackBar($event)"
+      ></DeleteDialog>
+      <v-snackbar v-model="snackbar" top right color="success">
+        The API key has been successfully deleted
+      </v-snackbar>
     </div>
   </div>
 </template>
@@ -57,7 +70,8 @@ export default {
 
   data: () => ({
     showAlert: false,
-    selectedName: "",
+    selectedItem: null,
+    snackbar: false,
     headers: [
       { text: "Assigned Name", align: "start", sortable: true, value: "name" },
       { text: "Key", value: "key", filterable: false },
@@ -119,17 +133,26 @@ export default {
   }),
   methods: {
     confirmDelete(item) {
-      const index = this.data.indexOf(item);
-      confirm("Are you sure you want to delete this item?") &&
-        this.data.splice(index, 1);
+      this.showAlert = true;
+      this.selectedItem = item;
     },
-    closeAlert() {
-      this.selectedName = "";
+    removeItem() {
+      const index = this.data.indexOf(this.selectedItem);
+      this.data.splice(index, 1);
+      this.selectedItem = null;
+    },
+    handleDeleteDlg() {
       this.showAlert = false;
     },
     toggleOpen() {
       this.$emit("changeOpen");
+    },
+    handleSnackBar(val) {
+      this.snackbar = val;
     }
+  },
+  components: {
+    DeleteDialog: () => import("../DeleteDialog")
   }
 };
 </script>

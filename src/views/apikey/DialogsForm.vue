@@ -60,8 +60,8 @@ export default {
       this.$refs.form.validate();
       if (this.$refs.form.validate(true)) {
         this.$emit("changeOpen");
+        this.$emit("handleSnackBar", true);
       }
-      // this.$emit("changeOpen");
     }
   }
 };

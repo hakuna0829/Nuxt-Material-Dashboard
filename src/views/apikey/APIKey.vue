@@ -12,14 +12,19 @@
         </BaseCard>
       </v-col>
       <v-col cols="12" sm="12" lg="6">
-        <BaseCard heading="Dialogs - Form">
-          <DialogsForm
-            :open="newDlg"
-            @changeOpen="handleNewDlg($event)"
-          ></DialogsForm>
-        </BaseCard>
+        <!-- <BaseCard heading="Dialogs - Form"> -->
+        <DialogsForm
+          :open="newDlg"
+          @changeOpen="handleNewDlg($event)"
+          @handleSnackBar="handleSnackBar($event)"
+        ></DialogsForm>
+
+        <!-- </BaseCard> -->
       </v-col>
     </v-row>
+    <v-snackbar v-model="snackbar" top right color="success">
+      New API key has been successfully created
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -32,6 +37,7 @@ export default {
       title: "API Key"
     },
     newDlg: false,
+    snackbar: false,
     breadcrumbs: [
       {
         text: "API Key",
@@ -43,6 +49,12 @@ export default {
   methods: {
     handleNewDlg() {
       this.newDlg = !this.newDlg;
+    },
+    handleDeleteDlg() {
+      this.deleteDlg = !this.deleteDlg;
+    },
+    handleSnackBar(val) {
+      this.snackbar = val;
     }
   },
   components: {
