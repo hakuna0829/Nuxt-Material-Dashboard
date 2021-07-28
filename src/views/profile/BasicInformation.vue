@@ -28,7 +28,7 @@
       <v-text-field
         type="email"
         v-model="emailtext"
-        label="Email e.g. 'example@gmail.com"
+        label="Email"
         filled
         background-color="transparent"
       ></v-text-field>

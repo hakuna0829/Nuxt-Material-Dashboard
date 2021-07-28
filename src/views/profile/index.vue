@@ -40,9 +40,6 @@
           <BasicInformation></BasicInformation>
         </BaseCard>
       </v-col>
-      <v-col cols="12" sm="12" lg="6">
-        <BaseCard heading="Dialogs - Form"> </BaseCard>
-      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -57,7 +54,7 @@ export default {
     },
     breadcrumbs: [
       {
-        text: "Profile",
+        text: "My Profile",
         disabled: false,
         to: "/profile"
       }
