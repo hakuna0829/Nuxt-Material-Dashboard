@@ -1,6 +1,7 @@
 <template>
   <v-container fluid class="down-top-padding" id="verify">
     <BaseBreadcrumb
+      :title="page.title"
       :icon="page.icon"
       :breadcrumbs="breadcrumbs"
     ></BaseBreadcrumb>
@@ -59,7 +60,7 @@ export default {
 
   data: () => ({
     page: {
-      title: "Billing information"
+      title: "Billing"
     },
     newDlg: false,
     breadcrumbs: [
