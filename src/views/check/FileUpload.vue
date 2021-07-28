@@ -1,48 +1,66 @@
 <template>
-  <div
-    class="uploadContainer border"
-    @dragover="dragover"
-    @dragleave="dragleave"
-    @drop="drop"
-  >
-    <v-snackbar :timeout="2000" :value="valid" absolute right top color="error">
-      Please upload csv file...
-    </v-snackbar>
-    <div class="p-12  item">
-      <label for="assetsFieldHandle" class="block cursor-pointer">
-        <div>
-          Drag and drop the .csv file or
-          <a style="text-decoration:underline">click here</a>
-        </div>
-      </label>
-      <input
-        type="file"
-        multiple
-        name="fields[assetsFieldHandle][]"
-        id="assetsFieldHandle"
-        class="w-px h-px opacity-0 overflow-hidden absolute"
-        style="display:none"
-        @change="onChange"
-        ref="file"
-        accept=".csv"
-      />
-      <ul class="mt-4" v-if="this.filelist.length" v-cloak>
-        <li class="text-sm p-1" v-for="file in filelist" :key="file.name">
-          {{ file.name }}
-          <button
-            class="ml-2"
-            type="button"
-            @click="remove(filelist.indexOf(file))"
-            title="Remove file"
-          >
-            remove
-          </button>
-        </li>
-      </ul>
+  <div class="root border">
+    <div class="pa-4">
+      Upload file
+    </div>
+    <div
+      class="uploadContainer "
+      @dragover="dragover"
+      @dragleave="dragleave"
+      @drop="drop"
+    >
+      <v-snackbar
+        :timeout="2000"
+        v-model="valid"
+        absolute
+        right
+        top
+        color="error"
+      >
+        Please upload csv file...
+      </v-snackbar>
+      <div class="p-12  item text-center">
+        <label for="assetsFieldHandle" class="block cursor-pointer">
+          <div>
+            Drag and drop the .csv file or
+            <a style="text-decoration:underline">click here</a>
+          </div>
+        </label>
+        <input
+          type="file"
+          multiple
+          name="fields[assetsFieldHandle][]"
+          id="assetsFieldHandle"
+          class="w-px h-px opacity-0 overflow-hidden absolute"
+          style="display:none"
+          @change="onChange"
+          ref="file"
+          accept=".csv"
+        />
+        <ul class="mt-4" v-if="this.filelist.length" v-cloak>
+          <li class="text-sm p-1" v-for="file in filelist" :key="file.name">
+            {{ file.name }}
+            <button
+              class="ml-2 text-decoration-underline"
+              type="button"
+              @click="remove(filelist.indexOf(file))"
+              title="Remove file"
+            >
+              Remove
+            </button>
+          </li>
+        </ul>
+        <v-btn v-if="this.filelist.length" color="primary" class="mt-2"
+          >Run email verification</v-btn
+        >
+      </div>
     </div>
   </div>
 </template>
 <style>
+.root {
+  background: #fff;
+}
 .uploadContainer {
   background: #fff;
   height: 150px;

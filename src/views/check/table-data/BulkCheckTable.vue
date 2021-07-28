@@ -28,8 +28,14 @@
           }"
         >
           <template v-slot:item.name="{ item }">
+            <v-btn
+              icon
+              href="https://bestemailverifier.com/examples/Myprofile.csv"
+              target="_blank"
+            >
+              <v-icon>mdi-cloud-download</v-icon>
+            </v-btn>
             {{ item.name }}
-            <v-icon>mdi-cloud-download</v-icon>
           </template>
           <template v-slot:item.status="{ item }">
             <v-chip dark :color="getColor(item.status)">
@@ -43,20 +49,23 @@
             <v-btn depressed class="custom-btn">
               <v-icon :name="item.action">mdi-delete-outline</v-icon>
             </v-btn>
-            <v-tooltip top>
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn
-                  depressed
-                  class="custom-btn"
-                  v-bind="attrs"
-                  v-on="on"
-                  :disabled="item.status !== 'Ready to verify'"
-                >
-                  <v-icon :name="item.action">mdi-cards-outline</v-icon>
-                </v-btn>
-              </template>
-              <span>Download CSV</span>
-            </v-tooltip>
+            <!-- <v-tooltip top>
+              <template v-slot:activator="{ on, attrs }"> -->
+            <v-btn
+              depressed
+              class="custom-btn"
+              v-bind="attrs"
+              v-on="on"
+              small
+              color="success"
+              :disabled="item.status !== 'Ready to verify'"
+            >
+              Download CSV
+              <v-icon :name="item.action">mdi-cards-outline</v-icon>
+            </v-btn>
+            <!-- </template> -->
+            <!-- <span>Download CSV</span> -->
+            <!-- </v-tooltip> -->
           </template>
         </v-data-table>
       </v-card>
@@ -137,7 +146,7 @@ export default {
         unknown: "170 (17%)"
       },
       {
-        name: "tester.csv",
+        name: "tester1.csv",
         status: "Ready to verify",
         count: 20,
         duplicates: 2,
@@ -150,7 +159,7 @@ export default {
         unknown: ""
       },
       {
-        name: "tester.csv",
+        name: "tester2.csv",
         status: "Ready to verify",
         count: 20,
         duplicates: 2,
@@ -163,7 +172,7 @@ export default {
         unknown: ""
       },
       {
-        name: "tester.csv",
+        name: "tester3.csv",
         status: "Ready to verify",
         count: 20,
         duplicates: 2,
@@ -176,7 +185,7 @@ export default {
         unknown: ""
       },
       {
-        name: "tester.csv",
+        name: "tester4.csv",
         status: "Verified",
         count: 20,
         duplicates: 2,
@@ -189,7 +198,7 @@ export default {
         unknown: ""
       },
       {
-        name: "tester.csv",
+        name: "tester5.csv",
         status: "Running",
         count: 20,
         duplicates: 2,
@@ -202,7 +211,7 @@ export default {
         unknown: ""
       },
       {
-        name: "tester.csv",
+        name: "tester6.csv",
         status: "Error API",
         count: 20,
         duplicates: 2,
@@ -240,9 +249,14 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 .custom-btn {
   min-width: 20px !important;
   padding: 0px 5px !important;
+}
+
+.custom-btn .v-btn__content {
+  font-size: 12px !important;
+  color: red;
 }
 </style>
