@@ -33,32 +33,21 @@
             </v-col>
             <v-col lg="5">
               <div class="pa-7 pa-sm-12">
-                <div class="text-center mt-6">
-                  <v-chip pill class="mr-2">
-                    <v-avatar left>
-                      <v-btn color="#21c1d6" class="white--text">
-                        <v-icon>mdi-google</v-icon>
-                      </v-btn> </v-avatar
-                    >Use Google account
-                  </v-chip>
-                </div>
-                <!-- <img src="@/assets/images/logo-icon.png" />-->
                 <h2
                   class="font-weight-bold mt-4 blue-grey--text text--darken-2"
                 >
-                  Login
+                  Password reset
                 </h2>
 
                 <h6 class="subtitle-1">
-                  Don't have an account?
-                  <a href="/authentication/BoxedRegister" class>Register</a>
+                  We'll email you instructions on how to reset your password.
                 </h6>
 
                 <v-form
                   ref="form"
                   v-model="valid"
                   lazy-validation
-                  action="/dashboards/analytical"
+                  action="boxedlogin"
                 >
                   <v-text-field
                     v-model="email"
@@ -68,29 +57,7 @@
                     required
                     outlined
                   ></v-text-field>
-                  <v-text-field
-                    v-model="password"
-                    :counter="10"
-                    :rules="passwordRules"
-                    label="Password"
-                    required
-                    outlined
-                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                    :type="show1 ? 'text' : 'password'"
-                    @click:append="show1 = !show1"
-                  ></v-text-field>
 
-                  <div class="d-block d-sm-flex align-center mb-4 mb-sm-0">
-                    <v-checkbox
-                      v-model="checkbox"
-                      :rules="[v => !!v || 'You must agree to continue!']"
-                      label="Remember me?"
-                      required
-                    ></v-checkbox>
-                    <div class="ml-auto">
-                      <a href="javascript:void(0)" class="link">Forgot pwd?</a>
-                    </div>
-                  </div>
                   <div class="form-group row">
                     <!-- <label for="robot" class="col-sm-2 col-form-label"></label> -->
                     <div class="col-sm-10">
@@ -103,16 +70,27 @@
                       </vue-recaptcha>
                     </div>
                   </div>
+
                   <v-btn
-                    :disabled="!valid"
+                    :disabled="!available"
                     color="info"
                     block
                     class="mr-4"
                     submit
                     @click="submit"
-                    >Login
-                  </v-btn>
+                    >Send</v-btn
+                  >
                 </v-form>
+                <div class="ml-auto">
+                  <v-btn
+                    text
+                    link
+                    to="boxedlogin"
+                    style="text-transform:none"
+                    class="link"
+                    >Go back
+                  </v-btn>
+                </div>
               </div>
             </v-col>
           </v-row>
@@ -125,30 +103,28 @@
 <script>
 import VueRecaptcha from "vue-recaptcha";
 export default {
-  name: "BoxedLogin",
+  name: "BoxedForgotPassword",
 
   data: () => ({
     valid: true,
-    password: "",
-    show1: false,
-    passwordRules: [
-      v => !!v || "Password is required",
-      v => (v && v.length <= 10) || "Password must be less than 10 characters"
-    ],
     email: "",
     emailRules: [
       v => !!v || "E-mail is required",
       v => /.+@.+\..+/.test(v) || "E-mail must be valid"
     ],
-    checkbox: false,
     robot: false
   }),
-  computed: {},
+  computed: {
+    available() {
+      console.log("availa", this.valid, this.robot);
+      return this.valid && this.robot;
+    }
+  },
   methods: {
     submit() {
       this.$refs.form.validate();
       if (this.$refs.form.validate(true) && this.robot) {
-        this.$router.push({ path: "/dashboards" });
+        this.$router.push({ path: "/authentication/boxedlogin" });
       }
     },
     handleBack() {
@@ -157,6 +133,9 @@ export default {
     onVerify: function(response) {
       if (response) this.robot = true;
     }
+  },
+  mounted: function() {
+    console.log("Mounted!", this.valid, this.robot);
   },
   components: {
     "vue-recaptcha": VueRecaptcha

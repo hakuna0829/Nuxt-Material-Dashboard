@@ -11,7 +11,7 @@
     >
       <v-snackbar
         :timeout="2000"
-        v-model="valid"
+        :value="valid"
         absolute
         right
         top

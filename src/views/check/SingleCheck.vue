@@ -5,9 +5,16 @@
       :icon="page.icon"
       :breadcrumbs="breadcrumbs"
     ></BaseBreadcrumb>
-    <v-row>
-      <v-col cols="12" md="5" lg="4">
-        <v-text-field label="" placeholder="" outlined :rules="rules" dense>
+    <v-row class="white">
+      <v-col cols="12" md="5" lg="4" class="mt-5">
+        <v-text-field
+          label=""
+          placeholder=""
+          outlined
+          :rules="rules"
+          dense
+          class="pl-2"
+        >
           <template v-slot:append-outer>
             <div style="margin-top:-8px">
               <v-btn
@@ -48,7 +55,7 @@ export default {
     ],
     rules: [
       value => !!value || "Required.",
-      value => (value || "").length <= 20 || "Max 20 characters",
+      value => (value || "").length <= 100 || "Max 100 characters",
       value => {
         const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return (

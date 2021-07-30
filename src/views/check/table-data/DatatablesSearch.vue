@@ -20,7 +20,7 @@
           :headers="computedHeaders"
           :items="desserts"
           :search="search"
-          item-key="email"
+          item-key="id"
           class="border"
           :custom-filter="filterOnlyCapsText"
           :footer-props="{
@@ -55,6 +55,8 @@
 </template>
 
 <script>
+import json from "./singleCheck_data.json";
+
 export default {
   name: "DatatablesSearch",
   computed: {
@@ -96,78 +98,7 @@ export default {
         filterable: false
       }
     ],
-    desserts: [
-      {
-        email: "knapicm@gmail.com",
-        status: "Deliverable",
-        reason: "Accepted",
-        domain: "gmail.com",
-        accepted: "Yes",
-        disposable: "No",
-        free: "Yes",
-        role: "No",
-        disabled: "unknown",
-        provider: "Outlook.com",
-        verified_on: "15-Jun-2021",
-        verified_by: "Martin Knapic"
-      },
-      {
-        email: "user1@gmail.com",
-        status: "Valid but Risky",
-        reason: "Deliverability",
-        domain: "gmail.com",
-        accepted: "No",
-        disposable: "No",
-        free: "Yes",
-        role: "No",
-        disabled: "no",
-        provider: "Outlook.com",
-        verified_on: "18-Jun-2021",
-        verified_by: "user1"
-      },
-      {
-        email: "tester2@gmail.com",
-        status: "Deliverable",
-        reason: "Accepted",
-        domain: "gmail.com",
-        accepted: "Yes",
-        disposable: "No",
-        free: "Yes",
-        role: "No",
-        disabled: "unknown",
-        provider: "Outlook.com",
-        verified_on: "5-Jul-2021",
-        verified_by: "William John"
-      },
-      {
-        email: "someone.surnamexyz@bestemailverifier.com",
-        status: "Unknown",
-        reason: "Accepted",
-        domain: "bestemailverifier.com",
-        accepted: "Yes",
-        disposable: "No",
-        free: "Yes",
-        role: "No",
-        disabled: "unknown",
-        provider: "Outlook.com",
-        verified_on: "5-Jul-2021",
-        verified_by: "William John"
-      },
-      {
-        email: "someone.surnamexyz@bestemailveri2fier.com",
-        status: "Invalid",
-        reason: "Accepted",
-        domain: "bestemailverifier.com",
-        accepted: "Yes",
-        disposable: "No",
-        free: "Yes",
-        role: "No",
-        disabled: "unknown",
-        provider: "Outlook.com",
-        verified_on: "5-Jul-2021",
-        verified_by: "William John"
-      }
-    ]
+    desserts: json.data
   }),
   methods: {
     filterOnlyCapsText(value, search, item) {

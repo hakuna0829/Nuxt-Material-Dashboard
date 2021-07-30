@@ -54,8 +54,6 @@
             <v-btn
               depressed
               class="custom-btn"
-              v-bind="attrs"
-              v-on="on"
               small
               color="success"
               :disabled="item.status !== 'Ready to verify'"
@@ -74,6 +72,7 @@
 </template>
 
 <script>
+import json from "./bulkCheck_data.json";
 export default {
   name: "DatatablesSearch",
   computed: {
@@ -118,116 +117,45 @@ export default {
         hide: "lgAndDown"
       }
     ],
-    desserts: [
-      {
-        name: "My profile.csv",
-        status: "Processing",
-        count: 100,
-        duplicates: 1,
-        action: "",
-        verified_on: "16-May-2021",
-        total: "",
-        deliverable: "",
-        valid_but_risky: "",
-        invalid: "",
-        unknown: ""
-      },
-      {
-        name: "user1.csv",
-        status: "Ready to verify",
-        count: 40,
-        duplicates: 1,
-        action: "Run",
-        verified_on: "19-May-2021",
-        total: 999,
-        deliverable: "450 (45%)",
-        valid_but_risky: "109 (11%)",
-        invalid: "250 (25%)",
-        unknown: "170 (17%)"
-      },
-      {
-        name: "tester1.csv",
-        status: "Ready to verify",
-        count: 20,
-        duplicates: 2,
-        action: "Run Again",
-        verified_on: "16-May-2021",
-        total: "",
-        deliverable: "",
-        valid_but_risky: "",
-        invalid: "",
-        unknown: ""
-      },
-      {
-        name: "tester2.csv",
-        status: "Ready to verify",
-        count: 20,
-        duplicates: 2,
-        action: "Run Again",
-        verified_on: "16-May-2021",
-        total: "",
-        deliverable: "",
-        valid_but_risky: "",
-        invalid: "",
-        unknown: ""
-      },
-      {
-        name: "tester3.csv",
-        status: "Ready to verify",
-        count: 20,
-        duplicates: 2,
-        action: "Run Again",
-        verified_on: "16-May-2021",
-        total: "",
-        deliverable: "",
-        valid_but_risky: "",
-        invalid: "",
-        unknown: ""
-      },
-      {
-        name: "tester4.csv",
-        status: "Verified",
-        count: 20,
-        duplicates: 2,
-        action: "Run Again",
-        verified_on: "16-May-2021",
-        total: "",
-        deliverable: "",
-        valid_but_risky: "",
-        invalid: "",
-        unknown: ""
-      },
-      {
-        name: "tester5.csv",
-        status: "Running",
-        count: 20,
-        duplicates: 2,
-        action: "Run Again",
-        verified_on: "16-May-2021",
-        total: "",
-        deliverable: "",
-        valid_but_risky: "",
-        invalid: "",
-        unknown: ""
-      },
-      {
-        name: "tester6.csv",
-        status: "Error API",
-        count: 20,
-        duplicates: 2,
-        action: "Run Again",
-        verified_on: "16-May-2021",
-        total: "",
-        deliverable: "",
-        valid_but_risky: "",
-        invalid: "",
-        unknown: ""
-      }
-    ]
+    desserts: json.data
   }),
   methods: {
     filterOnlyCapsText(value, search, item) {
       console.log("value, search, item", value, search, item);
+      var sampleJson = [];
+      for (var i = 1; i < 201; i = i + 2) {
+        var item1 = {
+          id: i,
+          name: `tester${i}.csv`,
+          status: "Processing",
+          count: 100,
+          duplicates: 1,
+          action: "",
+          verified_on: "16-May-2021",
+          total: "",
+          deliverable: "",
+          valid_but_risky: "",
+          invalid: "",
+          unknown: ""
+        };
+        var item2 = {
+          id: i + 1,
+          name: `tester${i + 1}.csv`,
+          status: "Ready to verify",
+          count: 20,
+          duplicates: 2,
+          action: "Run Again",
+          verified_on: "12-May-2021",
+          total: "",
+          deliverable: "",
+          valid_but_risky: "",
+          invalid: "",
+          unknown: ""
+        };
+        sampleJson.push(item1);
+        sampleJson.push(item2);
+      }
+      console.log("tempData", sampleJson);
       return (
         value != null &&
         search != null &&

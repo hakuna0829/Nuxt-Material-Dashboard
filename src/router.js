@@ -619,6 +619,11 @@ const router = new Router({
           component: () => import("@/views/authentication/BoxedLogin")
         },
         {
+          name: "BoxedForgotPassword",
+          path: "boxedforgotpassword",
+          component: () => import("@/views/authentication/BoxedForgotPassword")
+        },
+        {
           name: "FullLogin",
           path: "fulllogin",
           component: () => import("@/views/authentication/FullLogin")
