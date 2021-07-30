@@ -267,7 +267,7 @@
       <!---User -->
       <!-- ---------------------------------- -->
       <v-toolbar-title class="align-center d-flex mr-1">
-        Marin
+        Martin Knapic
       </v-toolbar-title>
       <v-menu
         bottom
