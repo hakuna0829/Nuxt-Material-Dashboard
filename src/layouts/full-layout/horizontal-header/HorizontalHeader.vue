@@ -279,11 +279,14 @@
         <template v-slot:activator="{ on }">
           <v-btn dark icon v-on="on" class="mr-1">
             <v-avatar size="40">
-              <img
+              <!-- <img
                 src="https://www.pngjoy.com/pngs/73/1571933_user-default-profile-picture-png-hd-png-download.png"
                 alt="Martin"
+              /> -->
+              <img
+                src="https://ca.slack-edge.com/TGUK83BPA-U01KTG7MK34-g19920895070-512"
+                alt="Martin"
               />
-              <!-- <img src="https://ca.slack-edge.com/TGUK83BPA-U01KTG7MK34-g19920895070-512" alt="Martin" /> -->
             </v-avatar>
           </v-btn>
         </template>
