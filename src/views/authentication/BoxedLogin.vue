@@ -88,7 +88,13 @@
                       required
                     ></v-checkbox>
                     <div class="ml-auto">
-                      <a href="javascript:void(0)" class="link">Forgot pwd?</a>
+                      <v-btn
+                        text
+                        to="boxedforgotpassword"
+                        class="link"
+                        style="text-transform:none"
+                        >Forgot pwd?</v-btn
+                      >
                     </div>
                   </div>
                   <div class="form-group row">

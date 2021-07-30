@@ -47,7 +47,7 @@
                   ref="form"
                   v-model="valid"
                   lazy-validation
-                  action="/pages/boxedlogin"
+                  action="/authentication/BoxedLogin/"
                 >
                   <v-text-field
                     v-model="fname"
@@ -115,8 +115,9 @@
 
 <script>
 export default {
-  name: "BoxedLogin",
+  name: "BoxedRegister",
   data: () => ({
+    valid: true,
     password: "",
     show1: false,
     passwordRules: [
