@@ -43,14 +43,17 @@
             <button
               class="ml-2 text-decoration-underline"
               type="button"
-              @click="remove(filelist.indexOf(file))"
+              @click="remove()"
               title="Remove file"
             >
               Remove
             </button>
           </li>
         </ul>
-        <v-btn v-if="this.filelist.length" color="primary" class="mt-2"
+        <v-btn
+          :disabled="this.filelist.length < 1 ? true : false"
+          color="primary"
+          class="mt-2"
           >Run email verification</v-btn
         >
       </div>
@@ -122,8 +125,10 @@ export default {
       console.log(
         "file type",
         this.$refs.file.files[0].type,
-        typeof this.$refs.file.files[0].type
+        typeof this.$refs.file.files[0].type,
+        this.$refs.file.files
       );
+
       if (this.$refs.file.files[0].type === "application/vnd.ms-excel") {
         this.error = false;
         this.filelist = [...this.$refs.file.files];
@@ -133,8 +138,9 @@ export default {
       }
       //   this.filelist = [...this.$refs.file.files];
     },
-    remove(i) {
-      this.filelist.splice(i, 1);
+    remove() {
+      this.filelist = [];
+      this.$refs.file.value = null;
     },
     dragover(event) {
       event.preventDefault();

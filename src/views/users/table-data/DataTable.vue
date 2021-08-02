@@ -26,16 +26,13 @@
           <template v-slot:item.email="{ item }">
             <p class="email">{{ item.email }}</p>
           </template>
-          <template v-slot:item.download="{ item }">
-            <!-- <div class="custom-class">File {{ item.download }}</div> -->
-            <a :href="item.download">File</a>
-          </template>
+
           <template v-slot:item.enabled="{ item }">
             <div class="d-flex justify-center">
               <v-checkbox v-model="item.enabled"></v-checkbox>
             </div>
           </template>
-          <template v-slot:item.action="{ item }">
+          <template v-slot:item.remove="{ item }">
             <v-icon class="error--text" @click="confirmDelete(item)"
               >mdi-delete</v-icon
             >
@@ -46,6 +43,15 @@
             </v-btn> -->
           </template>
         </v-data-table>
+        <DeleteDialog
+          :open="showAlert"
+          @changeOpen="handleDeleteDlg($event)"
+          @removeItem="removeItem($event)"
+          @handleSnackBar="handleSnackBar($event)"
+        ></DeleteDialog>
+        <v-snackbar v-model="snackbar" top right color="success">
+          The user has been successfully deleted
+        </v-snackbar>
       </v-card>
     </div>
   </div>
@@ -60,6 +66,7 @@ export default {
   data: () => ({
     showAlert: false,
     selectedName: "",
+    snackbar: false,
     headers: [
       { text: "", value: "avartar", filterable: false },
       { text: "User email", sortable: true, value: "email" },
@@ -68,7 +75,7 @@ export default {
       { text: "Type", value: "type", filterable: false },
       { text: "Access to credits", value: "access", filterable: false },
       { text: "Credits used", value: "credits_used", filterable: false },
-      { text: "", value: "remove", filterable: false }
+      { text: "", value: "remove", filterable: false, sortable: false }
     ],
     icons: { mdiDelete },
     data: [
@@ -95,18 +102,31 @@ export default {
     ]
   }),
   methods: {
-    confirmDelete(item) {
-      const index = this.data.indexOf(item);
-      confirm("Are you sure you want to delete this item?") &&
-        this.data.splice(index, 1);
-    },
     closeAlert() {
       this.selectedName = "";
       this.showAlert = false;
     },
     toggleOpen() {
       this.$emit("changeOpen");
+    },
+    confirmDelete(item) {
+      this.showAlert = true;
+      this.selectedName = item;
+    },
+    removeItem() {
+      const index = this.data.indexOf(this.selectedName);
+      this.data.splice(index, 1);
+      this.selectedName = null;
+    },
+    handleDeleteDlg() {
+      this.showAlert = false;
+    },
+    handleSnackBar(val) {
+      this.snackbar = val;
     }
+  },
+  components: {
+    DeleteDialog: () => import("../DeleteDialog")
   }
 };
 </script>

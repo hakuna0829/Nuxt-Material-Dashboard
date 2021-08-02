@@ -15,15 +15,24 @@
         class="align-center d-flex"
         v-if="navbarColor !== 'white'"
       >
-        <a href="https://bestemailverifier.com" target="blank">
-          <span class="logo-icon">
-            <img src="../../../assets/images/logo-light-icon.png" />
-          </span>
-        </a>
+        <div>
+          <a href="https://bestemailverifier.com" target="blank">
+            <span class="logo-icon">
+              <img
+                src="../../../assets/images/BestEmailVerifierlogo6.png"
+                width="30px"
+              />
+            </span>
+          </a>
+        </div>
 
-        <!-- <span class="logo-text ml-2" :class="`${showLogo ? '' : 'hidelogo'}`">
-          <img src="../../../assets/images/logo-light-text.png" class="mt-2" />
-        </span> -->
+        <p
+          class="logo-text ml-2 mb-1 logoTitle"
+          :class="`${showLogo ? '' : 'hidelogo'}`"
+        >
+          BEST EMAIL VERIFIER
+          <!-- <img src="../../../assets/images/logo-light-text.png" class="mt-2" /> -->
+        </p>
       </v-toolbar-title>
       <!-- ---------------------------------- -->
       <!---  dark Logo part -->
@@ -414,6 +423,12 @@ export default {
 }
 .descpart {
   max-width: 220px;
+}
+
+.logoTitle {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  color: #2b2b2b;
 }
 
 @media (min-width: 1024px) {
