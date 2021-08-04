@@ -28,42 +28,76 @@
           }"
         >
           <template v-slot:item.name="{ item }">
-            <v-btn
-              icon
-              href="https://bestemailverifier.com/examples/Myprofile.csv"
-              target="_blank"
-            >
-              <v-icon>mdi-cloud-download</v-icon>
-            </v-btn>
-            {{ item.name }}
+            <div class="text-start">
+              <v-btn
+                icon
+                href="https://bestemailverifier.com/examples/Myprofile.csv"
+                target="_blank"
+              >
+                <v-icon>mdi-cloud-download</v-icon>
+              </v-btn>
+              {{ item.name }}
+            </div>
           </template>
           <template v-slot:item.status="{ item }">
             <v-chip dark :color="getColor(item.status)">
               {{ item.status }}
             </v-chip>
           </template>
+          <template v-slot:item.verified_on="{ item }">
+            <div class="text-start">
+              {{ item.verified_on }}
+            </div>
+          </template>
           <template v-slot:item.action="{ item }">
-            <v-btn depressed class="custom-btn">
-              <v-icon :name="item.action">mdi-play-outline</v-icon>
-            </v-btn>
-            <v-btn depressed class="custom-btn">
-              <v-icon :name="item.action">mdi-delete-outline</v-icon>
-            </v-btn>
-            <!-- <v-tooltip top>
+            <div class="text-start">
+              <v-btn depressed class="custom-btn">
+                <v-icon :name="item.action">mdi-play-outline</v-icon>
+              </v-btn>
+              <v-btn depressed class="custom-btn">
+                <v-icon :name="item.action">mdi-delete-outline</v-icon>
+              </v-btn>
+              <!-- <v-tooltip top>
               <template v-slot:activator="{ on, attrs }"> -->
-            <v-btn
-              depressed
-              class="custom-btn"
-              small
-              color="success"
-              :disabled="item.status !== 'Ready to verify'"
-            >
-              Download CSV
-              <v-icon :name="item.action">mdi-cards-outline</v-icon>
-            </v-btn>
-            <!-- </template> -->
-            <!-- <span>Download CSV</span> -->
-            <!-- </v-tooltip> -->
+              <v-btn
+                depressed
+                class="custom-btn"
+                small
+                color="success"
+                :disabled="item.status !== 'Ready to verify'"
+              >
+                Download CSV
+                <v-icon :name="item.action">mdi-cards-outline</v-icon>
+              </v-btn>
+              <!-- </template> -->
+              <!-- <span>Download CSV</span> -->
+              <!-- </v-tooltip> -->
+            </div>
+          </template>
+          <template v-slot:item.total="{ item }">
+            <div class="text-start">
+              {{ item.total }}
+            </div>
+          </template>
+          <template v-slot:item.deliverable="{ item }">
+            <div class="text-start">
+              {{ item.deliverable }}
+            </div>
+          </template>
+          <template v-slot:item.valid_but_risky="{ item }">
+            <div class="text-start">
+              {{ item.valid_but_risky }}
+            </div>
+          </template>
+          <template v-slot:item.invalid="{ item }">
+            <div class="text-start">
+              {{ item.invalid }}
+            </div>
+          </template>
+          <template v-slot:item.unknown="{ item }">
+            <div class="text-start">
+              {{ item.unknown }}
+            </div>
           </template>
         </v-data-table>
       </v-card>
@@ -91,71 +125,31 @@ export default {
       { text: "Duplicates", value: "duplicates", filterable: false },
       { text: "Action", value: "action", filterable: false },
       { text: "Verified on", value: "verified_on", filterable: false },
-      { text: "Total", value: "total", filterable: false, hide: "lgAndDown" },
-      {
-        text: "Deliverable",
-        value: "deliverable",
-        filterable: false,
-        hide: "lgAndDown"
-      },
+      { text: "Total", value: "total", filterable: false },
+      { text: "Deliverable", value: "deliverable", filterable: false },
       {
         text: "Valid but Risky",
         value: "valid_but_risky",
-        filterable: false,
-        hide: "lgAndDown"
+        filterable: false
+        // hide: "lgAndDown"
       },
       {
         text: "Invalid",
         value: "invalid",
-        filterable: false,
-        hide: "lgAndDown"
+        filterable: false
+        // hide: "lgAndDown"
       },
       {
         text: "Unknown",
         value: "unknown",
-        filterable: false,
-        hide: "lgAndDown"
+        filterable: false
+        // hide: "lgAndDown"
       }
     ],
     desserts: json.data
   }),
   methods: {
-    filterOnlyCapsText(value, search, item) {
-      console.log("value, search, item", value, search, item);
-      var sampleJson = [];
-      for (var i = 1; i < 201; i = i + 2) {
-        var item1 = {
-          id: i,
-          name: `tester${i}.csv`,
-          status: "Processing",
-          count: 100,
-          duplicates: 1,
-          action: "",
-          verified_on: "16-May-2021",
-          total: "",
-          deliverable: "",
-          valid_but_risky: "",
-          invalid: "",
-          unknown: ""
-        };
-        var item2 = {
-          id: i + 1,
-          name: `tester${i + 1}.csv`,
-          status: "Ready to verify",
-          count: 20,
-          duplicates: 2,
-          action: "Run Again",
-          verified_on: "12-May-2021",
-          total: "",
-          deliverable: "",
-          valid_but_risky: "",
-          invalid: "",
-          unknown: ""
-        };
-        sampleJson.push(item1);
-        sampleJson.push(item2);
-      }
-      console.log("tempData", sampleJson);
+    filterOnlyCapsText(value, search) {
       return (
         value != null &&
         search != null &&
@@ -186,5 +180,8 @@ export default {
 .custom-btn .v-btn__content {
   font-size: 12px !important;
   color: red;
+}
+.v-application .text-start {
+  white-space: nowrap;
 }
 </style>
