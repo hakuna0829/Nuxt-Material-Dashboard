@@ -1,5 +1,10 @@
 <template>
-  <v-container fluid class="down-top-padding" id="verify">
+  <v-container
+    fluid
+    class="down-top-padding"
+    id="verify"
+    style="position:relative"
+  >
     <BaseBreadcrumb
       :title="page.title"
       :icon="page.icon"
@@ -62,6 +67,7 @@ export default {
       }
     ]
   }),
+
   components: {
     DatatablesSearch: () => import("./table-data/BulkCheckTable"),
     FileUpload: () => import("./FileUpload")

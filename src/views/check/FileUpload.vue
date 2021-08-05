@@ -1,5 +1,18 @@
 <template>
   <div class="root border">
+    <v-snackbar
+      :timeout="2000"
+      v-model="valid"
+      absolute
+      right
+      top
+      color="error"
+    >
+      Please upload csv file...
+    </v-snackbar>
+    <v-snackbar v-model="snackbar" top right color="success">
+      Email has been successfully verified.
+    </v-snackbar>
     <div class="pa-4">
       Upload file
     </div>
@@ -9,16 +22,6 @@
       @dragleave="dragleave"
       @drop="drop"
     >
-      <v-snackbar
-        :timeout="2000"
-        :value="valid"
-        absolute
-        right
-        top
-        color="error"
-      >
-        Please upload csv file...
-      </v-snackbar>
       <div class="p-12  item text-center">
         <label for="assetsFieldHandle" class="block cursor-pointer">
           <div>
@@ -54,6 +57,7 @@
           :disabled="this.filelist.length < 1 ? true : false"
           color="primary"
           class="mt-2"
+          @click="handleSnackBar(true)"
           >Run email verification</v-btn
         >
       </div>
@@ -109,12 +113,11 @@
 
 <script>
 export default {
-  data() {
-    return {
-      filelist: [], // Store our uploaded files
-      error: false
-    };
-  },
+  data: () => ({
+    filelist: [], // Store our uploaded files
+    error: false,
+    snackbar: false
+  }),
   computed: {
     valid() {
       return this.error;
@@ -135,12 +138,17 @@ export default {
       } else {
         this.error = true;
         this.$toast.info("Info toast");
+        this.remove();
       }
       //   this.filelist = [...this.$refs.file.files];
     },
     remove() {
       this.filelist = [];
       this.$refs.file.value = null;
+    },
+    handleSnackBar(val) {
+      console.log("verifcia");
+      this.snackbar = val;
     },
     dragover(event) {
       event.preventDefault();
