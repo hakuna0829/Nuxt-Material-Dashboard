@@ -76,23 +76,19 @@
         >
       </div>
     </v-card-text>
-    <v-snackbar v-model="snackbar_success" top right color="success">
-      User has been invited.You can inform them to check their email.
-    </v-snackbar>
-    <v-snackbar v-model="snackbar_error" top right color="error">
-      Something went wrong. Please try again later or contact our support team.
-    </v-snackbar>
   </v-card>
 </template>
 
 <script>
 export default {
   name: "BasicInformation",
+  props: {
+    method: { type: Function }
+  },
   data: () => ({
     emailtext: "knapic@gmail.com",
     userType: "",
-    snackbar_success: false,
-    snackbar_error: false,
+
     password60days: false,
     rules: [
       value => !!value || "Required.",
@@ -104,15 +100,9 @@ export default {
     ]
   }),
   methods: {
-    handleSuccessSnackBar(val) {
-      this.snackbar_success = val;
-    },
-    handleErrorSnackBar(val) {
-      this.snackbar_error = val;
-    },
     invite() {
-      if (this.userType !== "user") this.handleSuccessSnackBar(true);
-      else this.handleErrorSnackBar(true);
+      if (this.userType !== "user") this.$emit("handleSuccessBar", true);
+      else this.$emit("handleErrorBar", true);
     }
   }
 };

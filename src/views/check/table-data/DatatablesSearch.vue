@@ -28,7 +28,12 @@
           }"
         >
           <template v-slot:item.email="{ item }">
-            <p class="email">{{ item.email }}</p>
+            <v-tooltip top>
+              <template v-slot:activator="{ on, attrs }">
+                <p class="email" v-bind="attrs" v-on="on">{{ item.email }}</p>
+              </template>
+              <span style="width:50%">{{ item.email }}</span>
+            </v-tooltip>
           </template>
           <template v-slot:item.status="{ item }">
             <v-tooltip right>
@@ -47,6 +52,12 @@
           </template>
           <template v-slot:item.domain="{ item }">
             <p class="email">{{ item.domain }}</p>
+          </template>
+          <template v-slot:item.verified_on="{ item }">
+            <div class="text-no-wrap">{{ item.verified_on }}</div>
+          </template>
+          <template v-slot:item.verified_by="{ item }">
+            <div class="text-no-wrap">{{ item.verified_by }}</div>
           </template>
         </v-data-table>
       </v-card>
@@ -69,33 +80,53 @@ export default {
   data: () => ({
     search: "",
     headers: [
-      { text: "Email", align: "start", sortable: true, value: "email" },
+      {
+        text: "Email",
+        align: "start",
+        sortable: true,
+        value: "email",
+        class: "text-start"
+      },
       { text: "Status", value: "status", filterable: false },
       { text: "Reason", value: "reason", filterable: false },
       { text: "Domain", value: "domain", filterable: false },
       {
         text: "Accept all",
         value: "accepted",
-        filterable: false
+        filterable: false,
+        class: "text-no-wrap"
       },
-      { text: "Disposable", value: "disposable", filterable: false },
-      { text: "Free", value: "free", filterable: false },
-      { text: "Role", value: "role", filterable: false },
+      {
+        text: "Disposable",
+        value: "disposable",
+        filterable: false,
+        class: "text-no-wrap"
+      },
+      { text: "Free", value: "free", filterable: false, class: "text-no-wrap" },
+      { text: "Role", value: "role", filterable: false, class: "text-no-wrap" },
       {
         text: "Disabled",
         value: "disabled",
-        filterable: false
+        filterable: false,
+        class: "text-no-wrap"
       },
-      { text: "Provider", value: "provider", filterable: false },
+      {
+        text: "Provider",
+        value: "provider",
+        filterable: false,
+        class: "text-no-wrap"
+      },
       {
         text: "Verified on",
         value: "verified_on",
-        filterable: false
+        filterable: false,
+        class: "text-no-wrap"
       },
       {
         text: "Verified by",
         value: "verified_by",
-        filterable: false
+        filterable: false,
+        class: "text-no-wrap"
       }
     ],
     desserts: json.data
@@ -141,13 +172,17 @@ export default {
 
 .email {
   margin: 0px;
-  max-width: 100px;
+  max-width: 280px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   @media (min-width: 1904px) {
-    max-width: 180px;
+    max-width: 300px;
     margin: 0px;
   }
+}
+
+.no-wrap {
+  white-space: nowrap !important;
 }
 </style>

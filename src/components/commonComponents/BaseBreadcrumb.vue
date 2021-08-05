@@ -30,13 +30,17 @@ export default {
   props: {
     title: String,
     breadcrumbs: Array,
-    icon: String,
+    icon: String
   },
-  data: () => ({}),
+  data: () => ({})
 };
 </script>
 <style lang="scss">
 .page-breadcrumb {
   margin: -24px -25px 27px -25px;
+}
+
+.custom-shaodow {
+  box-shadow: none !important;
 }
 </style>

@@ -24,6 +24,7 @@ export default {
       title: "Users"
     },
     newDlg: false,
+
     breadcrumbs: [
       {
         text: "Users",

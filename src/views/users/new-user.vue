@@ -8,10 +8,19 @@
     <v-row>
       <v-col cols="12" sm="12">
         <BaseCard>
-          <BasicInformation></BasicInformation>
+          <BasicInformation
+            @handleSuccessBar="handleSuccessSnackBar"
+            @handleErrorBar="handleErrorSnackBar"
+          ></BasicInformation>
         </BaseCard>
       </v-col>
     </v-row>
+    <v-snackbar v-model="snackbar_success" absolute top right color="success">
+      User has been invited.You can inform them to check their email.
+    </v-snackbar>
+    <v-snackbar v-model="snackbar_error" absolute top right color="error">
+      Something went wrong. Please try again later or contact our support team.
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -23,6 +32,8 @@ export default {
     page: {
       title: "Add New User"
     },
+    snackbar_success: false,
+    snackbar_error: false,
     breadcrumbs: [
       {
         text: "Add New User",
@@ -37,6 +48,12 @@ export default {
   methods: {
     onButtonClick() {
       this.$refs.file.click();
+    },
+    handleSuccessSnackBar(val) {
+      this.snackbar_success = val;
+    },
+    handleErrorSnackBar(val) {
+      this.snackbar_error = val;
     }
   },
   components: {

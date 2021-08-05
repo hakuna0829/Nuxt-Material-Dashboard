@@ -32,10 +32,10 @@
         </v-card>
       </v-tab-item>
     </v-tabs-items>
-    <v-snackbar v-model="snackbar_success" top right color="success">
+    <v-snackbar v-model="snackbar_success" absolute top right color="success">
       The information was successfully saved.
     </v-snackbar>
-    <v-snackbar v-model="snackbar_error" top right color="error">
+    <v-snackbar v-model="snackbar_error" absolute top right color="error">
       The server is not responding. Try again later.
     </v-snackbar>
   </v-card>

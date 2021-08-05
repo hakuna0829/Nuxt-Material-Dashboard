@@ -6,7 +6,7 @@
       :breadcrumbs="breadcrumbs"
     ></BaseBreadcrumb>
     <v-row class="white">
-      <v-col cols="12" md="5" lg="4" class="mt-5">
+      <v-col cols="12" md="6" lg="6" xl="5" class="mt-5">
         <v-text-field
           label=""
           placeholder=""
@@ -54,7 +54,7 @@ export default {
       }
     ],
     rules: [
-      value => !!value || "Required.",
+      value => !!value || "Email required.",
       value => (value || "").length <= 100 || "Max 100 characters",
       value => {
         const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

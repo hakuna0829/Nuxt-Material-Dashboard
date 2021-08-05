@@ -119,30 +119,74 @@ export default {
   data: () => ({
     search: "",
     headers: [
-      { text: "File Name", align: "start", sortable: true, value: "name" },
-      { text: "Status", value: "status", filterable: false },
-      { text: "Count", value: "count", filterable: false },
-      { text: "Duplicates", value: "duplicates", filterable: false },
-      { text: "Action", value: "action", filterable: false },
-      { text: "Verified on", value: "verified_on", filterable: false },
-      { text: "Total", value: "total", filterable: false },
-      { text: "Deliverable", value: "deliverable", filterable: false },
+      {
+        text: "File Name",
+        align: "start",
+        sortable: true,
+        value: "name",
+        class: "text-no-wrap"
+      },
+      {
+        text: "Status",
+        value: "status",
+        filterable: false,
+        class: "text-no-wrap"
+      },
+      {
+        text: "Count",
+        value: "count",
+        filterable: false,
+        class: "text-no-wrap"
+      },
+      {
+        text: "Duplicates",
+        value: "duplicates",
+        filterable: false,
+        class: "text-no-wrap"
+      },
+      {
+        text: "Action",
+        value: "action",
+        filterable: false,
+        class: "text-no-wrap"
+      },
+      {
+        text: "Verified on",
+        value: "verified_on",
+        filterable: false,
+        class: "text-no-wrap"
+      },
+      {
+        text: "Total",
+        value: "total",
+        filterable: false,
+        class: "text-no-wrap"
+      },
+      {
+        text: "Deliverable",
+        value: "deliverable",
+        filterable: false,
+        class: "text-no-wrap"
+      },
       {
         text: "Valid but Risky",
         value: "valid_but_risky",
-        filterable: false
+        filterable: false,
+        class: "text-no-wrap"
         // hide: "lgAndDown"
       },
       {
         text: "Invalid",
         value: "invalid",
-        filterable: false
+        filterable: false,
+        class: "text-no-wrap"
         // hide: "lgAndDown"
       },
       {
         text: "Unknown",
         value: "unknown",
-        filterable: false
+        filterable: false,
+        class: "text-no-wrap"
         // hide: "lgAndDown"
       }
     ],
