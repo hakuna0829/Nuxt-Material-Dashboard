@@ -233,7 +233,7 @@
       >
         <template v-slot:activator="{ on }">
           <v-btn dark icon v-on="on" class="mr-1">
-            <v-icon>mdi-cog</v-icon>
+            <v-icon>mdi-help-circle </v-icon>
           </v-btn>
         </template>
 

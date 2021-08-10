@@ -15,10 +15,22 @@
         </BaseCard>
       </v-col>
     </v-row>
-    <v-snackbar v-model="snackbar_success" absolute top right color="success">
-      User has been invited.You can inform them to check their email.
+    <v-snackbar
+      v-model="snackbar_success"
+      top
+      right
+      color="success"
+      style="padding-top:125px"
+    >
+      User has been invited. You can inform them to check their email.
     </v-snackbar>
-    <v-snackbar v-model="snackbar_error" absolute top right color="error">
+    <v-snackbar
+      v-model="snackbar_error"
+      top
+      right
+      color="error"
+      style="padding-top:125px"
+    >
       Something went wrong. Please try again later or contact our support team.
     </v-snackbar>
   </v-container>

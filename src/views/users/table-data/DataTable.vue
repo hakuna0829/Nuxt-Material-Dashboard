@@ -49,7 +49,13 @@
           @removeItem="removeItem($event)"
           @handleSnackBar="handleSnackBar($event)"
         ></DeleteDialog>
-        <v-snackbar v-model="snackbar" top right color="success">
+        <v-snackbar
+          v-model="snackbar"
+          top
+          right
+          color="success"
+          style="padding-top:125px"
+        >
           The user has been successfully deleted
         </v-snackbar>
       </v-card>

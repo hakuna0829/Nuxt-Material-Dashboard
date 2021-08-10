@@ -28,12 +28,23 @@
           }"
         >
           <template v-slot:item.email="{ item }">
-            <v-tooltip top>
-              <template v-slot:activator="{ on, attrs }">
-                <p class="email" v-bind="attrs" v-on="on">{{ item.email }}</p>
+            <v-edit-dialog :return-value.sync="item.email">
+              <v-tooltip top>
+                <template v-slot:activator="{ on, attrs }">
+                  <p class="email" v-bind="attrs" v-on="on">{{ item.email }}</p>
+                </template>
+                <span style="width:50%">{{ item.email }}</span>
+              </v-tooltip>
+              <template v-slot:input>
+                <v-text-field
+                  v-model="item.email"
+                  :rules="emailRules"
+                  label="Edit"
+                  single-line
+                  counter
+                ></v-text-field>
               </template>
-              <span style="width:50%">{{ item.email }}</span>
-            </v-tooltip>
+            </v-edit-dialog>
           </template>
           <template v-slot:item.status="{ item }">
             <v-tooltip right>
@@ -79,6 +90,10 @@ export default {
   },
   data: () => ({
     search: "",
+    emailRules: [
+      v => !!v || "E-mail is required",
+      v => /.+@.+\..+/.test(v) || "E-mail must be valid"
+    ],
     headers: [
       {
         text: "Email",
